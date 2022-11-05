@@ -11,7 +11,7 @@ use \APP\Models\Ta;
 class Revisi extends Model
 {
     use HasFactory;
-    public $with = ['mahasiswa', 'pembimbing'];
+    public $with = ['mahasiswa', 'pembimbing', 'ta'];
 
     public function mahasiswa()
     {
