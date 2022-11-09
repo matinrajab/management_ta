@@ -15,4 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('layouts.master');
+})->name('master');
+
+Route::get('mhs', function () {
+    return view('layouts.master');
+});
+
+
+Route::get('/proposal', function () {
+    return view('mhs.proposal');
+})->name('proposal');
+Route::get('/proposal/add', function () {
+    return view('mhs.addproposal');
 });
