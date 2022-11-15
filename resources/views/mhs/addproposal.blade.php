@@ -36,8 +36,8 @@ $proposal = true;
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Proposal</a></li>
                     <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tambah Proposal</li>
                 </ol>
-                <h6 class="font-weight-bolder text-white mb-0">Tambah Proposal</h6>
                 </nav>
+
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group">

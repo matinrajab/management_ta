@@ -25,6 +25,11 @@ Route::get('mhs', function () {
 Route::get('/proposal', function () {
     return view('mhs.proposal');
 })->name('proposal');
+
+Route::get('/ta', function () {
+    return view('mhs.ta');
+})->name('ta');
+
 Route::get('/proposal/add', function () {
     return view('mhs.addproposal');
 });
