@@ -31,5 +31,10 @@ Route::get('/ta', function () {
 })->name('ta');
 
 Route::get('/proposal/add', function () {
-    return view('mhs.addproposal');
+    return view('mhs.add_proposal');
 });
+
+
+Route::get('/dosbing', function () {
+    return view('mhs.daftar_dosbing');
+})->name('dosbing');;

@@ -8,4 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa extends Model
 {
     use HasFactory;
+    protected $table = "mahasiswa";
+
+    protected $fillable = ['nrp', 'nama_mhs', 'gender', 'phone', 'email', 'alamat'];
+
+    public function proposal()
+    {
+        return $this->hasOne('App\Model\Proposal');
+    }
+
+    public function logbook()
+    {
+        return $this->hasMany('App\Model\Logbook');
+    }
+
+    public function ta()
+    {
+        return $this->hasOne('App\Model\Ta');
+    }
+
+    public function revisi()
+    {
+        return $this->hasMany('App\Model\Revisi');
+    }
 }

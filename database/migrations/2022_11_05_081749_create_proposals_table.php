@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('proposals', function (Blueprint $table) {
+        Schema::create('proposal', function (Blueprint $table) {
             $table->id();
             $table->string('judul', 100);
-            $table->enum('matkul', ['Basis Data', 'Konsep Jaringan', 'Komputasi']);
+            $table->enum('bidang', ['Basis Data', 'Konsep Jaringan', 'Komputasi']);
             $table->dateTime('tgl_seminar', $precision = 0);
             $table->enum('status', ['Diterima', 'Ditolak', 'Proses']);
             $table->integer('nilai');
             $table->string('keterangan');
-            $table->foreignId('id_mahasiswa');
-            $table->foreignId('id_pembimbing');
+            $table->foreignId('mahasiswa_id');
+            $table->foreignId('pembimbing_id');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proposals');
+        Schema::dropIfExists('proposal');
     }
 };

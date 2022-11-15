@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('revisis', function (Blueprint $table) {
+        Schema::create('revisi', function (Blueprint $table) {
             $table->id();
             $table->string('keterangan', 200);
             $table->enum('status', ['Sudah lulus', 'Belum lulus']);
-            $table->foreignId('id_mahasiswa');
-            $table->foreignId('id_ta');
-            $table->foreignId('id_pembimbing');
+            $table->foreignId('mahasiswa_id');
+            $table->foreignId('pembimbing_id');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('revisis');
+        Schema::dropIfExists('revisi');
     }
 };

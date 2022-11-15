@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use \APP\Models\Mahasiswa;
-use \APP\Models\Pembimbing;
 
 class Proposal extends Model
 {
     use HasFactory;
-    public $with = ['mahasiswa', 'pembimbing'];
+    protected $table = "proposal";
+
+    protected $fillable = ['judul', 'bidang', 'tgl_seminar', 'status', 'nilai', 'keterangan'];
 
     public function mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class, "id_mahasiswa");
+        return $this->belongsTo('App\Model\Mahasiswa');
     }
 
     public function pembimbing()
     {
-        return $this->belongsTo(Pembimbing::class, "id_pembimbing");
+        return $this->belongsTo('App\Model\Pembimbing');
     }
 }

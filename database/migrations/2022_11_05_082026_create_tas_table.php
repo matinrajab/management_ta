@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tas', function (Blueprint $table) {
+        Schema::create('ta', function (Blueprint $table) {
             $table->id();
             $table->string('judul', 100);
             $table->date('tgl_daftar');
@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('nilai_dosbing1');
             $table->integer('nilai_penguji1');
             $table->integer('nilai_penguji2');
-            $table->foreignId('id_mahasiswa');
-            $table->foreignId('id_pembimbing');
+            $table->foreignId('mahasiswa_id');
+            $table->foreignId('pembimbing_id');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tas');
+        Schema::dropIfExists('ta');
     }
 };
