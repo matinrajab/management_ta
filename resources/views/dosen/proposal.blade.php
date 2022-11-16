@@ -1,5 +1,5 @@
 <?php 
-$mhs = true;
+$proposal = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ $mhs = true;
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('argon-dashboard-master') }}/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('argon-dashboard-master') }}/assets/img/favicon.png">
     <title>
-        Mahasiswa
+        Proposal
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -33,9 +33,9 @@ $mhs = true;
                 <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Mahasiswa</li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Proposal</li>
                 </ol>
-                <h6 class="font-weight-bolder text-white mb-0">Mahasiswa</h6>
+                <h6 class="font-weight-bolder text-white mb-0">Proposal</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -128,36 +128,39 @@ $mhs = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Daftar Mahasiswa</h6>
+                            <h6>Proposal</h6> 
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NRP</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gender</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                                        </tr> 
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mahasiswa</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bidang</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <p class="text-xs font-weight-bold text-center mb-0">3121600</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold text-center mb-0">Alif</p>
-                                            </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Laki-laki</span>
+                                                <span class="text-xs font-weight-bold">Alif</span>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">Monitoring Tanaman Berbasis IOT</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">Jaringan</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold">087745345567</span>
+                                                <span class="badge badge-sm bg-gradient-success">Disetujui</span>
                                             </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">alif@gmail.com</span>
+                                            <td class="align-middle">
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Download </a>
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>
                                             </td>
                                         </tr>
                                     </tbody>

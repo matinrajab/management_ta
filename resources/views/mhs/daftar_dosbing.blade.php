@@ -145,25 +145,19 @@ $dosbing = true;
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Monitoring Tanaman Berbasis IOT</h6>
-                                                    </div>
-                                                </div>
+                                                <p class="text-xs font-weight-bold text-center mb-0">198801062019031009</p>
                                             </td>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0">Jaringan</p>
+                                                <p class="text-xs font-weight-bold text-center mb-0">Pak Yanuar</p>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Pak Yanuar</span>
+                                                <span class="text-xs font-weight-bold">0877044563378</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">Disetujui</span>
+                                                <span class="text-xs font-weight-bold">yanuar@gmail.com</span>
                                             </td>
-                                            <td class="align-middle">
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delet </a>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">1</span>
                                             </td>
                                         </tr>
                                     </tbody>

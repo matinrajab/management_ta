@@ -17,11 +17,7 @@ Route::get('/', function () {
     return view('layouts.master');
 })->name('master');
 
-Route::get('mhs', function () {
-    return view('layouts.master');
-});
-
-
+// mhs
 Route::get('/proposal', function () {
     return view('mhs.proposal');
 })->name('proposal');
@@ -46,6 +42,15 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/mhs', function () {
+// dosen
+Route::get('/dosen/mhs', function () {
     return view('dosen.daftar_mhs');
-});
+})->name('/dosen/mhs');
+
+Route::get('/dosen/ta', function () {
+    return view('dosen.ta');
+})->name('/dosen/ta');
+
+Route::get('/dosen/proposal', function () {
+    return view('dosen.proposal');
+})->name('/dosen/proposal');

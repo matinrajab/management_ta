@@ -15,7 +15,7 @@
 
 @include('layouts.header')
 
-@include('layouts.sidebar')
+@include('layouts.sidebar_mhs')
   
     <!-- Navbar -->
 @include('layouts.navbar')

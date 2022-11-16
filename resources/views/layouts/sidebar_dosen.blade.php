@@ -3,7 +3,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href=" {{route('master')}} " target="_blank">
             <img src="{{asset('argon-dashboard-master')}}/assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">Manajement TA</span>
+            <span class="ms-1 font-weight-bold">Dosen</span>
         </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -18,15 +18,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ isset($proposal) ? 'active' : ''}}" href="{{ route('proposal') }}">
+                <a class="nav-link {{ isset($proposal) ? 'active' : ''}}" href="{{ route('/dosen/proposal') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        <i class="ni ni-single-copy-04 text-info text-sm opacity-10 "></i>
                     </div>
                     <span class="nav-link-text ms-1">Proposal</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ isset($ta) ? 'active' : ''}}"  href="{{ route('ta') }}">
+                <a class="nav-link {{ isset($ta) ? 'active' : ''}}"  href="{{ route('/dosen/ta') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
                     </div>
@@ -34,30 +34,22 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ isset($ta) ? 'active' : ''}}" href="../pages/virtual-reality.html">
+                <a class="nav-link {{ isset($sidang) ? 'active' : ''}}" href="../pages/virtual-reality.html">
                     <div class="icon icon-shape icon-sm text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-app text-info text-sm opacity-10 "></i>
+                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1 has-dropdown ">Sidang</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="../pages/virtual-reality.html">
-                    <div class="icon icon-shape icon-sm text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-copy-04 text-info text-sm opacity-10 "></i>
-                    </div>
-                    <span class="nav-link-text ms-1 has-dropdown ">Surat</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">List</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ isset($dosbing) ? 'active' : ''}}"  href="{{ route('dosbing') }}">
+                <a class="nav-link {{ isset($mhs) ? 'active' : ''}}"  href="{{ route('/dosen/mhs') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Dosen Pembimbing</span>
+                    <span class="nav-link-text ms-1">Mahasiswa</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
