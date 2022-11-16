@@ -40,8 +40,12 @@ Route::get('/proposal/add', function () {
 
 Route::get('/dosbing', function () {
     return view('mhs.daftar_dosbing');
-})->name('dosbing');;
+})->name('dosbing');
 
 Route::get('/login', function () {
     return view('login');
+});
+
+Route::get('/mhs', function () {
+    return view('dosen.daftar_mhs');
 });

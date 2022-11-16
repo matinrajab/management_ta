@@ -2,4 +2,4 @@
 $sidang = true;
 ?>
 @include('layouts.header');
-@include('layouts.sidebar');
+@include('layouts.sidebar_mhs');
