@@ -12,6 +12,11 @@ class Mahasiswa extends Model
 
     protected $fillable = ['nrp', 'nama_mhs', 'gender', 'phone', 'email', 'alamat'];
 
+    public function pembimbing()
+    {
+        return $this->belongsTo('App\Model\Pembimbing');
+    }
+
     public function proposal()
     {
         return $this->hasOne('App\Model\Proposal');

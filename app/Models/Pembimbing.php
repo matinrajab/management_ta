@@ -12,6 +12,11 @@ class Pembimbing extends Model
 
     protected $fillable = ['nip', 'nama_pembimbing', 'phone', 'email', 'alamat', 'jumlah'];
 
+    public function mahasiswa()
+    {
+        return $this->hasMany('App\Model\Mahasiswa');
+    }
+
     public function proposal()
     {
         return $this->hasMany('App\Model\Proposal');

@@ -30,11 +30,18 @@ Route::get('/ta', function () {
     return view('mhs.ta');
 })->name('ta');
 
+Route::get('/sidang', function () {
+    return view('mhs.sidang');
+})->name('sidang');
+
 Route::get('/proposal/add', function () {
     return view('mhs.add_proposal');
 });
 
-
 Route::get('/dosbing', function () {
     return view('mhs.daftar_dosbing');
 })->name('dosbing');;
+
+Route::get('/login', function () {
+    return view('login');
+});
