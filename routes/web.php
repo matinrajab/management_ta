@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,3 +56,35 @@ Route::get('/dosen/ta', function () {
 Route::get('/dosen/proposal', function () {
     return view('dosen.proposal');
 })->name('/dosen/proposal');
+
+Auth::routes();
+
+/*------------------------------------------
+--------------------------------------------
+All Mhs Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:mhs'])->group(function () {
+
+    Route::get('/mhs/home', [HomeController::class, 'mhsHome'])->name('mhs.home');
+});
+
+/*------------------------------------------
+--------------------------------------------
+All Dosen Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:dosen'])->group(function () {
+
+    Route::get('/dosen/home', [HomeController::class, 'dosenHome'])->name('dosen.home');
+});
+
+/*------------------------------------------
+--------------------------------------------
+All Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+
+    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+});
