@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthLoginController;
+use App\Http\Controllers\MhsController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,46 +19,8 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
-})->name('master');
-
-// mhs
-Route::get('/proposal', function () {
-    return view('mhs.proposal');
-})->name('proposal');
-
-Route::get('/ta', function () {
-    return view('mhs.ta');
-})->name('ta');
-
-Route::get('/sidang', function () {
-    return view('mhs.sidang');
-})->name('sidang');
-
-Route::get('/proposal/add', function () {
-    return view('mhs.add_proposal');
-});
-
-Route::get('/dosbing', function () {
-    return view('mhs.daftar_dosbing');
-})->name('dosbing');
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-// dosen
-Route::get('/dosen/mhs', function () {
-    return view('dosen.daftar_mhs');
-})->name('/dosen/mhs');
-
-Route::get('/dosen/ta', function () {
-    return view('dosen.ta');
-})->name('/dosen/ta');
-
-Route::get('/dosen/proposal', function () {
-    return view('dosen.proposal');
-})->name('/dosen/proposal');
+    return view('auth.login');
+})->name('login');
 
 Auth::routes();
 
@@ -66,7 +31,17 @@ All Mhs Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:mhs'])->group(function () {
 
-    Route::get('/mhs/home', [HomeController::class, 'mhsHome'])->name('mhs.home');
+    Route::get('/mhs', [MhsController::class, 'home'])->name('mhs.dashboard');
+
+    Route::get('/mhs/proposal', [MhsController::class, 'proposal'])->name('mhs.proposal');
+
+    Route::get('/mhs/proposal/add', [MhsController::class, 'add_proposal'])->name('mhs.add_proposal');
+
+    Route::get('/mhs/ta', [MhsController::class, 'ta'])->name('mhs.ta');
+
+    Route::get('/mhs/sidang', [MhsController::class, 'sidang'])->name('mhs.sidang');
+
+    Route::get('/mhs/dosbing', [MhsController::class, 'dosbing'])->name('mhs.daftar_dosbing');
 });
 
 /*------------------------------------------
@@ -76,7 +51,13 @@ All Dosen Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:dosen'])->group(function () {
 
-    Route::get('/dosen/home', [HomeController::class, 'dosenHome'])->name('dosen.home');
+    Route::get('/dosen', [DosenController::class, 'home'])->name('dosen.dashboard');
+
+    Route::get('/dosen/mhs', [DosenController::class, 'mhs'])->name('dosen.daftar_mhs');
+
+    Route::get('/dosen/ta', [DosenController::class, 'ta'])->name('dosen.ta');
+
+    Route::get('/dosen/proposal', [DosenController::class, 'proposal'])->name('dosen.proposal');
 });
 
 /*------------------------------------------
@@ -86,5 +67,5 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
-    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    // Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 });
