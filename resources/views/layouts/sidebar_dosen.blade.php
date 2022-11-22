@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ isset($sidang) ? 'active' : ''}}" href="../pages/virtual-reality.html">
+                <a class="nav-link {{ isset($sidang) ? 'active' : ''}}" href="{{ route('dosen.sidang')}}">
                     <div class="icon icon-shape icon-sm text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                     </div>

@@ -26,6 +26,11 @@ class DosenController extends Controller
         return view('dosen.ta');
     }
 
+    public function sidang()
+    {
+        return view('dosen.sidang');
+    }
+
     public function proposal()
     {
         return view('dosen.proposal');

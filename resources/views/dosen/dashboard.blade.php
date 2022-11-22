@@ -30,6 +30,7 @@ $dashboard = true;
     <main class="main-content position-relative border-radius-lg ">
         @include('layouts.navbar')
         @include('layouts.content')
+        <br>
         @include('layouts.footer')
     </main>
 

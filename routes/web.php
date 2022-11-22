@@ -57,6 +57,8 @@ Route::middleware(['auth', 'user-access:dosen'])->group(function () {
 
     Route::get('/dosen/ta', [DosenController::class, 'ta'])->name('dosen.ta');
 
+    Route::get('/dosen/sidang', [DosenController::class, 'sidang'])->name('dosen.sidang');
+
     Route::get('/dosen/proposal', [DosenController::class, 'proposal'])->name('dosen.proposal');
 });
 
