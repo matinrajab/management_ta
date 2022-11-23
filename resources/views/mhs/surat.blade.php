@@ -1,5 +1,5 @@
-<?php 
-$sidang = true;
+<?php
+$surat = true;
 ?>
 @include('layouts.header');
 @include('layouts.sidebar_mhs');
@@ -9,9 +9,9 @@ $sidang = true;
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-                <li class="breadcrumb-item text-sm text-white active" aria-current="page">Sidang</li>
+                <li class="breadcrumb-item text-sm text-white active" aria-current="page">Surat</li>
             </ol>
-            <h6 class="font-weight-bolder text-white mb-0">Sidang</h6>
+            <h6 class="font-weight-bolder text-white mb-0">Surat</h6>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -103,92 +103,29 @@ $sidang = true;
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <a href="/proposal/add">
-                    <span><h6>Detail Sidang</h6></span> 
-                    </a> 
+                    <span><h6>Surat</h6></span> 
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari/tanggal</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tempat</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji1</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji2</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nilai</th>
-                                        <th class="text-secondary opacity-7"></th>
+                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder">Lembar Pengesahan</th>
+                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder">Ijazah</th>
+                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder">Surat Rekomendasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td class="align-middle text-center">
-                                            <h6 class="text-sm mb-0">Senin 23 November 2022</h6>
+                                            <button disabled class="badge badge-sm bg-gradient-success border : none">Cetak Lembar Pengesahan</button>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <p class="text-xs font-weight-bold mb-0">qwergh</p>
+                                            <button class="badge badge-sm bg-gradient-success border : none">Cetak Ijazah</button>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">Alif</span>
+                                            <button class="badge badge-sm bg-gradient-success border : none">Cetak Surat</button>
                                         </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">Ana</span>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">80</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-header pb-0">
-                        <a href="/proposal/add">
-                    <span><h6>Revisi</h6></span> 
-                    </a> 
-                    </div>
-                    <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari/tanggal</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kegiatan</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
-                                        <th class="text-secondary opacity-7"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="align-middle text-center">
-                                            <h6 class="text-sm mb-0">Senin 23 November 2022</h6>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <p class="text-xs font-weight-bold mb-0">qwergh</p>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">File</span>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold">ertytrew</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delet </a>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>

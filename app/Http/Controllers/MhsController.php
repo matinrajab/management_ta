@@ -36,6 +36,11 @@ class MhsController extends Controller
         return view('mhs.sidang');
     }
 
+    public function surat()
+    {
+        return view('mhs.surat');
+    }
+
     public function dosbing()
     {
         return view('mhs.daftar_dosbing');

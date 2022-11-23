@@ -104,7 +104,7 @@ $sidang = true;
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <a href="/proposal/add">
-                        <span><h6>Detail Sidang</h6></span> 
+                        <span><h6>Atur Sidang</h6></span> 
                         </a> 
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
@@ -130,7 +130,7 @@ $sidang = true;
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">qwergh</p>
                                             </td>
                                             <td class="align-middle text-center">
@@ -140,7 +140,7 @@ $sidang = true;
                                                 <span class="text-xs font-weight-bold">Ana</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold">ertytrew</span>
+                                                <span class="badge badge-sm bg-gradient-success">80</span>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
@@ -188,7 +188,7 @@ $sidang = true;
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">qwergh</p>
                                             </td>
                                             <td class="align-middle text-center">
@@ -197,7 +197,9 @@ $sidang = true;
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-xs font-weight-bold">ertytrew</span>
                                             </td>
-                                            <td class="align-middle">
+                                            <td class="align-middle text-center">
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Download"> Download </a>
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delet </a>

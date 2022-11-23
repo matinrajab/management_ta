@@ -148,16 +148,16 @@ $proposal = true;
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Alif</span>
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">Monitoring Tanaman Berbasis IOT</p>
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">Jaringan</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="badge badge-sm bg-gradient-success">Disetujui</span>
                                             </td>
-                                            <td class="align-middle">
+                                            <td class="align-middle text-center">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Download </a>
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>

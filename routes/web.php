@@ -41,6 +41,8 @@ Route::middleware(['auth', 'user-access:mhs'])->group(function () {
 
     Route::get('/mhs/sidang', [MhsController::class, 'sidang'])->name('mhs.sidang');
 
+    Route::get('/mhs/surat', [MhsController::class, 'surat'])->name('mhs.surat');
+
     Route::get('/mhs/dosbing', [MhsController::class, 'dosbing'])->name('mhs.daftar_dosbing');
 });
 

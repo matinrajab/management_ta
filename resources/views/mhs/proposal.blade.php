@@ -138,6 +138,7 @@ $proposal = true;
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bidang</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Pembimbing</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                             <th class="text-secondary opacity-7"></th>
@@ -152,11 +153,14 @@ $proposal = true;
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">Jaringan</p>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Pak Yanuar</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-warning">file</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="badge badge-sm bg-gradient-success">Disetujui</span>

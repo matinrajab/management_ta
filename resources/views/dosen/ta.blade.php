@@ -123,14 +123,10 @@ $ta = true;
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Senin 15 November 2022</h6>
-                                                    </div>
-                                                </div>
+                                            <td class="align-middle text-center">
+                                                <h6 class="text-sm mb-0">Senin 15 November 2022</h6>
                                             </td>
-                                            <td>
+                                            <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">Pembahasan BAB 1</p>
                                             </td>
                                             <td class="align-middle text-center">
@@ -139,7 +135,7 @@ $ta = true;
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-xs font-weight-bold">perlu ditambahkan latar belakang yang jelas</span>
                                             </td>
-                                            <td class="align-middle">
+                                            <td class="align-middle text-center">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delet </a>
