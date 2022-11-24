@@ -118,13 +118,13 @@ $surat = true;
                                 <tbody>
                                     <tr>
                                         <td class="align-middle text-center">
-                                            <button disabled class="badge badge-sm bg-gradient-success border : none">Cetak Lembar Pengesahan</button>
+                                            <a href="#" disabled class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Lembar Pengesahan</a>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <button class="badge badge-sm bg-gradient-success border : none">Cetak Ijazah</button>
+                                            <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Ijazah</a>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <button class="badge badge-sm bg-gradient-success border : none">Cetak Surat</button>
+                                            <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Surat</a>
                                         </td>
                                 </tbody>
                             </table>

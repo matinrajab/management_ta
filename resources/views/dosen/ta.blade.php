@@ -104,9 +104,7 @@ $ta = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <a href="/proposal/add">
-                        <span><h6>Logbook</h6></span> 
-                        </a> 
+                            <span><h6>Logbook</h6></span> 
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -117,8 +115,6 @@ $ta = true;
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kegiatan</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mahasiswa</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
-                                            <th class="text-secondary opacity-7"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -134,11 +130,6 @@ $ta = true;
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">perlu ditambahkan latar belakang yang jelas</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delet </a>
                                             </td>
                                         </tr>
                                     </tbody>

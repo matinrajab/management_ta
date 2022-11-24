@@ -138,6 +138,7 @@ $proposal = true;
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mahasiswa</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bidang</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                             <th class="text-secondary opacity-7"></th>
@@ -154,13 +155,14 @@ $proposal = true;
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Jaringan</span>
                                             </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
+                                            </td>
                                             <td class="align-middle text-center">
                                                 <span class="badge badge-sm bg-gradient-success">Disetujui</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Download </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>
+                                                <a href="/dosen/proposal/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>
                                             </td>
                                         </tr>
                                     </tbody>

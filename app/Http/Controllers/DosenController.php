@@ -31,8 +31,28 @@ class DosenController extends Controller
         return view('dosen.sidang');
     }
 
+    public function sidang_add()
+    {
+        return view('dosen.sidang_add');
+    }
+
+    public function sidang_edit()
+    {
+        return view('dosen.sidang_edit');
+    }
+
     public function proposal()
     {
         return view('dosen.proposal');
+    }
+
+    public function proposal_edit()
+    {
+        return view('dosen.proposal_edit');
+    }
+
+    public function revisi_edit()
+    {
+        return view('dosen.revisi_edit');
     }
 }

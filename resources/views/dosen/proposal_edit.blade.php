@@ -26,7 +26,7 @@ $proposal = true;
 
 <body class="g-sidenav-show bg-gray-100">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
-    @include('layouts.sidebar_mhs')
+    @include('layouts.sidebar_dosen')
     <main class="main-content position-relative border-radius-lg ">
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="false">
             <div class="container-fluid py-1 px-3">
@@ -137,8 +137,14 @@ $proposal = true;
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Mahasiswa</label>
+                                            <input class="form-control" type="text" value="Alif" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Judul Proposal</label>
-                                            <input class="form-control" type="text" value="Monitoring Tanaman Berbasis IOT">
+                                            <input class="form-control" type="text" value="Monitoring Tanaman Berbasis IOT" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
@@ -150,25 +156,18 @@ $proposal = true;
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Keterangan</label>
+                                            <input class="form-control" type="text" value="" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Status</label>
                                             <input class="form-control" type="text" value="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Dosen Pembimbing</label>
-                                            <input class="form-control" type="text" value="Pak Yanuar" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                            {{-- tampilkan file sebelumnya --}}
-                                            <label for="example-text-input" class="form-control-label">File Proposal</label>
-                                            <input class="form-control" type="file" name="file">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" value="Simpan" class="btn btn-primary btn-sm ms-auto">
-                                            <a href="/mhs/proposal" class="btn btn-warning btn-sm ms-auto">Kembali</a>
+                                            <a href="/dosen/proposal" class="btn btn-warning btn-sm ms-auto">Kembali</a>
                                         </div>
                                     </div>
                                 </form>

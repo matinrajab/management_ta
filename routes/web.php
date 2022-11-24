@@ -71,7 +71,15 @@ Route::middleware(['auth', 'user-access:dosen'])->group(function () {
 
     Route::get('/dosen/sidang', [DosenController::class, 'sidang'])->name('dosen.sidang');
 
+    Route::get('/dosen/sidang/add', [DosenController::class, 'sidang_add'])->name('dosen.sidang_add');
+
+    Route::get('/dosen/sidang/edit', [DosenController::class, 'sidang_edit'])->name('dosen.sidang_edit');
+
     Route::get('/dosen/proposal', [DosenController::class, 'proposal'])->name('dosen.proposal');
+
+    Route::get('/dosen/proposal/edit', [DosenController::class, 'proposal_edit'])->name('dosen.proposal_edit');
+
+    Route::get('/dosen/revisi/edit', [DosenController::class, 'revisi_edit'])->name('dosen.revisi_edit');
 });
 
 /*------------------------------------------
