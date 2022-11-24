@@ -21,9 +21,14 @@ class MhsController extends Controller
         return view('mhs.proposal');
     }
 
-    public function add_proposal()
+    public function proposal_add()
     {
-        return view('mhs.add_proposal');
+        return view('mhs.proposal_add');
+    }
+
+    public function proposal_edit()
+    {
+        return view('mhs.proposal_edit');
     }
 
     public function ta()
@@ -31,9 +36,29 @@ class MhsController extends Controller
         return view('mhs.ta');
     }
 
+    public function ta_add()
+    {
+        return view('mhs.ta_add');
+    }
+
+    public function ta_edit()
+    {
+        return view('mhs.ta_edit');
+    }
+
     public function sidang()
     {
         return view('mhs.sidang');
+    }
+
+    public function revisi_add()
+    {
+        return view('mhs.revisi_add');
+    }
+
+    public function revisi_edit()
+    {
+        return view('mhs.revisi_edit');
     }
 
     public function surat()

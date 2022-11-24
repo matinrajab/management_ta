@@ -128,7 +128,7 @@ $proposal = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <a href="/mhs/proposal/add"><h6>Tambah Proposal</h6></a> 
+                            <a href="/mhs/proposal/add" class="btn btn-primary btn-sm ms-auto">Tambah Proposal</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -146,29 +146,25 @@ $proposal = true;
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Monitoring Tanaman Berbasis IOT</h6>
-                                                    </div>
-                                                </div>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">Monitoring Tanaman Berbasis IOT</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <p class="text-xs font-weight-bold mb-0">Jaringan</p>
+                                                <span class="text-xs font-weight-bold mb-0">Jaringan</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Pak Yanuar</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-warning">file</span>
+                                                <a href="#"><span class="badge badge-sm bg-gradient-warning">download</span></a>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="badge badge-sm bg-gradient-success">Disetujui</span>
                                             </td>
-                                            <td class="align-middle">
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delet </a>
+                                            <td class="align-middle text-center">
+                                                <a href="/mhs/proposal/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                                <span class="text-secondary font-weight-bold text-xs"> | </span>
+                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
                                             </td>
                                         </tr>
                                     </tbody>

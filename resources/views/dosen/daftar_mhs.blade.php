@@ -144,16 +144,16 @@ $mhs = true;
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <p class="text-xs font-weight-bold text-center mb-0">3121600</p>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">3121600</span>
                                             </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold text-center mb-0">Alif</p>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">Alif</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Laki-laki</span>
                                             </td>
-                                            <td class="align-middle text-center text-sm">
+                                            <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">087745345567</span>
                                             </td>
                                             <td class="align-middle text-center">

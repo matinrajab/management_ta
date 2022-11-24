@@ -104,9 +104,7 @@ $ta = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <a href="/proposal/add">
-                        <span><h6>Logbook</h6></span> 
-                        </a> 
+                            <a href="/mhs/ta/add" class="btn btn-primary btn-sm ms-auto">Tambah Logbook</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -123,26 +121,22 @@ $ta = true;
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Senin 15 November 2022</h6>
-                                                    </div>
-                                                </div>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">23/11/2022</span>
                                             </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold mb-0">Pembahasan BAB 1</p>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">Pembahasan BAB 1</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Pak Yanuar</span>
                                             </td>
-                                            <td class="align-middle text-center text-sm">
+                                            <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">perlu ditambahkan latar belakang yang jelas</span>
                                             </td>
-                                            <td class="align-middle">
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delet </a>
+                                            <td class="align-middle text-center">
+                                                <a href="/mhs/ta/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                                <span class="text-secondary font-weight-bold text-xs"> | </span>
+                                                <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
                                             </td>
                                         </tr>
                                     </tbody>

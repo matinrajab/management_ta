@@ -149,12 +149,12 @@ $proposal = true;
                                                 <span class="text-xs font-weight-bold">Alif</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <p class="text-xs font-weight-bold mb-0">Monitoring Tanaman Berbasis IOT</p>
+                                                <span class="text-xs font-weight-bold">Monitoring Tanaman Berbasis IOT</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <p class="text-xs font-weight-bold mb-0">Jaringan</p>
+                                                <span class="text-xs font-weight-bold">Jaringan</span>
                                             </td>
-                                            <td class="align-middle text-center text-sm">
+                                            <td class="align-middle text-center">
                                                 <span class="badge badge-sm bg-gradient-success">Disetujui</span>
                                             </td>
                                             <td class="align-middle text-center">

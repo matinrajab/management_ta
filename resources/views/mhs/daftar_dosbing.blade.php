@@ -144,16 +144,16 @@ $dosbing = true;
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <p class="text-xs font-weight-bold text-center mb-0">198801062019031009</p>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">198801062019031009</span>
                                             </td>
-                                            <td>
-                                                <p class="text-xs font-weight-bold text-center mb-0">Pak Yanuar</p>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">Pak Yanuar</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">0877044563378</span>
                                             </td>
-                                            <td class="align-middle text-center text-sm">
+                                            <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">yanuar@gmail.com</span>
                                             </td>
                                             <td class="align-middle text-center">

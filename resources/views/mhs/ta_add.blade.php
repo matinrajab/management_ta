@@ -1,5 +1,5 @@
 <?php 
-$proposal = true;
+$ta = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +33,8 @@ $proposal = true;
                 <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Proposal</a></li>
-                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tambah Proposal</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Ta</a></li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tambah Logbook</li>
                 </ol>
                 </nav>
 
@@ -129,7 +129,7 @@ $proposal = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <a href="#"><h6>Tambah Proposal</h6></a> 
+                            <h6>Tambah Logbook</h6> 
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
@@ -137,36 +137,33 @@ $proposal = true;
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Judul Proposal</label>
-                                            <input class="form-control" type="text">
+                                            <label for="example-text-input" class="form-control-label">Tanggal</label>
+                                            <input class="form-control" type="date">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Bidang</label>
-                                            <input class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Keterangan</label>
+                                            <label for="example-text-input" class="form-control-label">Kegiatan</label>
                                             <input class="form-control" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Pembimbing</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" value="Pak Yanuar" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">File Proposal</label>
-                                            <input class="form-control" type="file" name="file">
+                                            <label for="example-text-input" class="form-control-label">Catatan</label>
+                                            <input class="form-control" type="text">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Simpan" class="btn btn-primary btn-sm ms-auto">
+                                            <a href="/mhs/ta" class="btn btn-warning btn-sm ms-auto">Kembali</a>
+                                        </div>
                                     </div>
-                                    <input type="submit" value="Simpan" class="btn btn-primary btn-sm ms-auto">
                                 </form>
                             </div>
                         </div>

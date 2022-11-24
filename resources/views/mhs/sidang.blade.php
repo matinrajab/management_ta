@@ -103,9 +103,7 @@ $sidang = true;
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <a href="/proposal/add">
-                    <span><h6>Detail Sidang</h6></span> 
-                    </a> 
+                        <span><h6>Detail Sidang</h6></span> 
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -123,10 +121,10 @@ $sidang = true;
                                 <tbody>
                                     <tr>
                                         <td class="align-middle text-center">
-                                            <h6 class="text-sm mb-0">Senin 23 November 2022</h6>
+                                            <span class="text-xs font-weight-bold">Senin 23 November 2022</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <p class="text-xs font-weight-bold mb-0">qwergh</p>
+                                            <span class="text-xs font-weight-bold">qwergh</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-xs font-weight-bold">Alif</span>
@@ -152,9 +150,8 @@ $sidang = true;
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <a href="/proposal/add">
-                    <span><h6>Revisi</h6></span> 
-                    </a> 
+                        <span><h6>Revisi</h6></span> 
+                        <a href="/mhs/sidang/revisi_add" class="btn btn-primary btn-sm ms-auto">Tambah Revisi</a>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -172,21 +169,21 @@ $sidang = true;
                                 <tbody>
                                     <tr>
                                         <td class="align-middle text-center">
-                                            <h6 class="text-sm mb-0">Senin 23 November 2022</h6>
+                                            <span class="text-xs font-weight-bold">Senin 23 November 2022</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <p class="text-xs font-weight-bold mb-0">qwergh</p>
+                                            <span class="text-xs font-weight-bold">qwergh</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-xs font-weight-bold">File</span>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
+                                        <td class="align-middle text-center">
                                             <span class="text-xs font-weight-bold">ertytrew</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delet </a>
+                                            <a href="/mhs/sidang/revisi_edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                            <span class="text-secondary font-weight-bold text-xs"> | </span>
+                                            <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
                                         </td>
                                     </tr>
                                 </tbody>

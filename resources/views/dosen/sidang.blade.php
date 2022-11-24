@@ -123,15 +123,11 @@ $sidang = true;
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Senin 15 November 2022</h6>
-                                                    </div>
-                                                </div>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">Senin 15 November 2022</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <p class="text-xs font-weight-bold mb-0">qwergh</p>
+                                                <span class="text-xs font-weight-bold">qwergh</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Alif</span>
@@ -142,7 +138,7 @@ $sidang = true;
                                             <td class="align-middle text-center text-sm">
                                                 <span class="badge badge-sm bg-gradient-success">80</span>
                                             </td>
-                                            <td class="align-middle">
+                                            <td class="align-middle text-center ">
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title=""> | </a>
                                                 <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delet </a>
@@ -181,20 +177,16 @@ $sidang = true;
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Senin 15 November 2022</h6>
-                                                    </div>
-                                                </div>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">Senin 15 November 2022</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <p class="text-xs font-weight-bold mb-0">qwergh</p>
+                                                <span class="text-xs font-weight-bold">qwergh</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Alif</span>
                                             </td>
-                                            <td class="align-middle text-center text-sm">
+                                            <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">ertytrew</span>
                                             </td>
                                             <td class="align-middle text-center">

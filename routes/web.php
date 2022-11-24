@@ -35,11 +35,21 @@ Route::middleware(['auth', 'user-access:mhs'])->group(function () {
 
     Route::get('/mhs/proposal', [MhsController::class, 'proposal'])->name('mhs.proposal');
 
-    Route::get('/mhs/proposal/add', [MhsController::class, 'add_proposal'])->name('mhs.add_proposal');
+    Route::get('/mhs/proposal/add', [MhsController::class, 'proposal_add'])->name('mhs.proposal_add');
+
+    Route::get('/mhs/proposal/edit', [MhsController::class, 'proposal_edit'])->name('mhs.proposal_edit');
 
     Route::get('/mhs/ta', [MhsController::class, 'ta'])->name('mhs.ta');
 
+    Route::get('/mhs/ta/add', [MhsController::class, 'ta_add'])->name('mhs.ta_add');
+
+    Route::get('/mhs/ta/edit', [MhsController::class, 'ta_edit'])->name('mhs.ta_edit');
+
     Route::get('/mhs/sidang', [MhsController::class, 'sidang'])->name('mhs.sidang');
+
+    Route::get('/mhs/sidang/revisi_add', [MhsController::class, 'revisi_add'])->name('mhs.revisi_add');
+
+    Route::get('/mhs/sidang/revisi_edit', [MhsController::class, 'revisi_edit'])->name('mhs.revisi_edit');
 
     Route::get('/mhs/surat', [MhsController::class, 'surat'])->name('mhs.surat');
 
