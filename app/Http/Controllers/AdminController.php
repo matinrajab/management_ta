@@ -10,4 +10,9 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function home()
+    {
+        return view('admin.dashboard');
+    }
 }
