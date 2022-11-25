@@ -115,6 +115,7 @@ $sidang = true;
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji1</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji2</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nilai</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                         </tr>
                                     </thead>
@@ -134,6 +135,9 @@ $sidang = true;
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="badge badge-sm bg-gradient-success">80</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">LULUS</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <a href="/dosen/sidang/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
@@ -155,9 +159,7 @@ $sidang = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <a href="/proposal/add">
-                        <span><h6>Revisi</h6></span> 
-                        </a> 
+                        <span><h6>Revisi</h6></span>  
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -165,7 +167,6 @@ $sidang = true;
                                     <thead>
                                         <tr>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari/tanggal</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kegiatan</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mahasiswa</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
@@ -179,9 +180,6 @@ $sidang = true;
                                                 <span class="text-xs font-weight-bold">Senin 15 November 2022</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">qwergh</span>
-                                            </td>
-                                            <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Alif</span>
                                             </td>
                                             <td class="align-middle text-center">
@@ -191,7 +189,7 @@ $sidang = true;
                                                 <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="badge badge-sm bg-gradient-success">Disetujui</span>
+                                                <span class="badge badge-sm bg-gradient-success">LULUS</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <a href="/dosen/revisi/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>

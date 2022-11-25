@@ -156,7 +156,7 @@ $proposal = true;
                                                 <span class="text-xs font-weight-bold">Pak Yanuar</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
+                                                <span class="badge badge-sm text-uppercase bg-gradient-warning mb-0">Terupload</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span class="badge badge-sm bg-gradient-success">Disetujui</span>

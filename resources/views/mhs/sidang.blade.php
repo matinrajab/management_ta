@@ -115,6 +115,7 @@ $sidang = true;
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji1</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji2</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nilai</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
@@ -134,6 +135,9 @@ $sidang = true;
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm bg-gradient-success">80</span>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm bg-gradient-success">LULUS</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -159,9 +163,9 @@ $sidang = true;
                                 <thead>
                                     <tr>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari/tanggal</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kegiatan</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
@@ -178,7 +182,7 @@ $sidang = true;
                                             <span class="text-xs font-weight-bold">File</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">ertytrew</span>
+                                            <span class="badge badge-sm bg-gradient-success text-xs font-weight-bold">LULUS</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <a href="/mhs/sidang/revisi_edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>

@@ -156,7 +156,10 @@ $proposal = true;
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Pembimbing</label>
-                                            <input class="form-control" type="text">
+                                            <select id="dosbing" class="form-select">
+                                                <option>Pak Yanuar</option>
+                                                <option>Pak Mu'a</option>
+                                              </select>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
