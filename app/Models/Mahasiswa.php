@@ -36,4 +36,9 @@ class Mahasiswa extends Model
     {
         return $this->hasMany('App\Model\Revisi');
     }
+
+    public function surat()
+    {
+        return $this->hasOne('App\Model\Surat');
+    }
 }

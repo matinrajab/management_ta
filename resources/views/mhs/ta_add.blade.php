@@ -137,6 +137,12 @@ $ta = true;
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Dosen Pembimbing</label>
+                                            <input class="form-control" type="text" value="Pak Yanuar" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Tanggal</label>
                                             <input class="form-control" type="date">
                                             </div>
@@ -145,12 +151,6 @@ $ta = true;
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Kegiatan</label>
                                             <input class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Dosen Pembimbing</label>
-                                            <input class="form-control" type="text" value="Pak Yanuar" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">

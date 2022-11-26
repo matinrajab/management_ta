@@ -110,7 +110,8 @@ $sidang = true;
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari/tanggal</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mahasiswa</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tempat</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji1</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji2</th>
@@ -122,10 +123,13 @@ $sidang = true;
                                     <tbody>
                                         <tr>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Senin 15 November 2022</span>
+                                                <span class="text-xs font-weight-bold">Alif</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">qwergh</span>
+                                                <span class="text-xs font-weight-bold">15 November 2022</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">Gedung Pasca Sarjana</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Alif</span>
@@ -137,7 +141,7 @@ $sidang = true;
                                                 <span class="badge badge-sm bg-gradient-success">80</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">LULUS</span>
+                                                <span class="badge badge-sm bg-gradient-success">lulus</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <a href="/dosen/sidang/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
@@ -166,8 +170,8 @@ $sidang = true;
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari/tanggal</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mahasiswa</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
@@ -177,10 +181,10 @@ $sidang = true;
                                     <tbody>
                                         <tr>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Senin 15 November 2022</span>
+                                                <span class="text-xs font-weight-bold">Alif</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
+                                                <span class="text-xs font-weight-bold">Senin 15 November 2022</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">ertytrew</span>

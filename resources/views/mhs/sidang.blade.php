@@ -110,22 +110,25 @@ $sidang = true;
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari/tanggal</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tempat</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji1</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji2</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nilai</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                                        <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">Senin 23 November 2022</span>
+                                            <span class="text-xs font-weight-bold">Monitoring Tanaman Berbasis IOT</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">qwergh</span>
+                                            <span class="text-xs font-weight-bold">23 November 2022</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-xs font-weight-bold">Gedung D4</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-xs font-weight-bold">Alif</span>
@@ -137,7 +140,7 @@ $sidang = true;
                                             <span class="badge badge-sm bg-gradient-success">80</span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">LULUS</span>
+                                            <span class="badge badge-sm bg-gradient-success">lulus</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -162,7 +165,7 @@ $sidang = true;
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari/tanggal</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
@@ -173,16 +176,16 @@ $sidang = true;
                                 <tbody>
                                     <tr>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">Senin 23 November 2022</span>
+                                            <span class="text-xs font-weight-bold">23 November 2022</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-xs font-weight-bold">qwergh</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">File</span>
+                                            <span class="text-xs font-weight-bold">Terupload</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="badge badge-sm bg-gradient-success text-xs font-weight-bold">LULUS</span>
+                                            <span class="badge badge-sm bg-gradient-success text-xs font-weight-bold">lulus</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <a href="/mhs/sidang/revisi_edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>

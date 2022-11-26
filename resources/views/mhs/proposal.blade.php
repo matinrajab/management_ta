@@ -141,7 +141,6 @@ $proposal = true;
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
-                                            <th class="text-secondary opacity-7"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -150,7 +149,7 @@ $proposal = true;
                                                 <span class="text-xs font-weight-bold">Monitoring Tanaman Berbasis IOT</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold mb-0">Jaringan</span>
+                                                <span class="text-xs font-weight-bold">Jaringan</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Pak Yanuar</span>

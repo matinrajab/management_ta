@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('nama_pembimbing', 100);
             $table->string('phone', 15);
             $table->string('email', 100);
-            $table->string('alamat', 200);
             $table->integer('jumlah');
             $table->timestamps();
         });

@@ -16,11 +16,10 @@ return new class extends Migration
         Schema::create('proposal', function (Blueprint $table) {
             $table->id();
             $table->string('judul', 100);
-            $table->enum('bidang', ['Basis Data', 'Konsep Jaringan', 'Komputasi']);
-            $table->dateTime('tgl_seminar', $precision = 0);
-            $table->enum('status', ['Diterima', 'Ditolak', 'Proses']);
-            $table->integer('nilai');
-            $table->string('keterangan');
+            $table->enum('bidang', ['Basis Data', 'Jaringan', 'Pemrograman Web', 'Aplikasi Mobile']);
+            $table->string('pembimbing');
+            $table->string('file');
+            $table->enum('status', ['Disetujui', 'Ditolak', 'Proses']);
             $table->foreignId('mahasiswa_id');
             $table->foreignId('pembimbing_id');
             $table->timestamps();

@@ -144,13 +144,10 @@ $proposal = true;
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Bidang</label>
-                                            <input class="form-control" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Keterangan</label>
-                                            <input class="form-control" type="text">
+                                            <select id="bidang" class="form-select">
+                                                <option>Basis Data</option>
+                                                <option>Konsep Jaringan</option>
+                                            </select>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
@@ -159,7 +156,7 @@ $proposal = true;
                                             <select id="dosbing" class="form-select">
                                                 <option>Pak Yanuar</option>
                                                 <option>Pak Mu'a</option>
-                                              </select>
+                                            </select>
                                             </div>
                                         </div>
                                         <div class="col-md-7">

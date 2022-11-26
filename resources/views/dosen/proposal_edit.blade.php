@@ -34,7 +34,7 @@ $proposal = true;
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Proposal</a></li>
-                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Edit Proposal</li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Ubah Status</li>
                 </ol>
                 </nav>
 
@@ -129,7 +129,7 @@ $proposal = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Edit Proposal</h6> 
+                            <h6>Ubah Status</h6> 
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
@@ -155,14 +155,12 @@ $proposal = true;
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Keterangan</label>
-                                            <input class="form-control" type="text" value="" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Status</label>
-                                            <input class="form-control" type="text" value="">
+                                            <select id="dosbing" class="form-select">
+                                                <option>Proses</option>
+                                                <option>Disetujui</option>
+                                                <option>Ditolak</option>
+                                            </select>
                                             </div>
                                         </div>
                                         <div class="form-group">

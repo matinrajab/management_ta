@@ -144,24 +144,23 @@ $proposal = true;
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Bidang</label>
-                                            <input class="form-control" type="text" value="Jaringan" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Keterangan</label>
-                                            <input class="form-control" type="text" value="">
+                                            <select id="bidang" class="form-select">
+                                                <option>Basis Data</option>
+                                                <option>Konsep Jaringan</option>
+                                            </select>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Pembimbing</label>
-                                            <input class="form-control" type="text" value="Pak Yanuar" readonly>
+                                            <select id="dosbing" class="form-select">
+                                                <option>Pak Yanuar</option>
+                                                <option>Pak Mu'a</option>
+                                            </select>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            {{-- tampilkan file sebelumnya --}}
                                             <label for="example-text-input" class="form-control-label">File Proposal</label>
                                             <input class="form-control" type="file" name="file">
                                             </div>

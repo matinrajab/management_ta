@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('revisi', function (Blueprint $table) {
             $table->id();
-            $table->string('keterangan', 200);
-            $table->enum('status', ['Sudah lulus', 'Belum lulus']);
+            $table->date('tanggal');
+            $table->string('catatan');
+            $table->string('file');
+            $table->enum('status', ['Lulus', 'Belum lulus', 'Proses']);
             $table->foreignId('mahasiswa_id');
             $table->foreignId('pembimbing_id');
             $table->timestamps();

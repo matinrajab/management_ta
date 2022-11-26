@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('logbook', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
             $table->string('kegiatan', 100);
-            $table->string('keterangan', 200);
+            $table->string('catatan', 200);
             $table->string('nama_pembimbing', 100);
-            $table->dateTime('tanggal', $precision = 0);
             $table->foreignId('mahasiswa_id');
             $table->foreignId('pembimbing_id');
             $table->timestamps();

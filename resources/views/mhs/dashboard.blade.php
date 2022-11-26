@@ -29,7 +29,7 @@ $dashboard = true;
     @include('layouts.sidebar_mhs')
     <main class="main-content position-relative border-radius-lg ">
         @include('layouts.navbar')
-        @include('layouts.content')
+        @include('layouts.content_mhs')
         @include('layouts.footer')
     </main>
 

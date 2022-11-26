@@ -90,4 +90,16 @@ All Admin Routes List
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('/admin', [AdminController::class, 'home'])->name('admin.dashboard');
+
+    Route::get('/admin/dosbing', [AdminController::class, 'dosbing'])->name('admin.dosbing');
+
+    Route::get('/admin/dosbing/add', [AdminController::class, 'dosbing_add'])->name('admin.dosbing_add');
+
+    Route::get('/admin/dosbing/edit', [AdminController::class, 'dosbing_edit'])->name('admin.dosbing_edit');
+
+    Route::get('/admin/mhs', [AdminController::class, 'mhs'])->name('admin.mhs');
+
+    Route::get('/admin/mhs/add', [AdminController::class, 'mhs_add'])->name('admin.mhs_add');
+
+    Route::get('/admin/mhs/edit', [AdminController::class, 'mhs_edit'])->name('admin.mhs_edit');
 });

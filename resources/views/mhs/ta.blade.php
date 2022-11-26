@@ -111,9 +111,9 @@ $ta = true;
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hari/tanggal</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kegiatan</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Pembimbing</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kegiatan</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                             <th class="text-secondary opacity-7"></th>
@@ -122,13 +122,13 @@ $ta = true;
                                     <tbody>
                                         <tr>
                                             <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">Pak Yanuar</span>
+                                            </td>
+                                            <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">23/11/2022</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">Pembahasan BAB 1</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Pak Yanuar</span>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">perlu ditambahkan latar belakang yang jelas</span>
