@@ -102,4 +102,22 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/mhs/add', [AdminController::class, 'mhs_add'])->name('admin.mhs_add');
 
     Route::get('/admin/mhs/edit', [AdminController::class, 'mhs_edit'])->name('admin.mhs_edit');
+
+    Route::get('/admin/proposal', [AdminController::class, 'proposal'])->name('admin.proposal');
+
+    Route::get('/admin/proposal/edit', [AdminController::class, 'proposal_edit'])->name('admin.proposal_edit');
+
+    Route::get('/admin/ta', [AdminController::class, 'ta'])->name('admin.ta');
+
+    Route::get('/admin/ta/add', [AdminController::class, 'ta_add'])->name('admin.ta_add');
+
+    Route::get('/admin/ta/edit', [AdminController::class, 'ta_edit'])->name('admin.ta_edit');
+
+    Route::get('/admin/sidang', [AdminController::class, 'sidang'])->name('admin.sidang');
+
+    Route::get('/admin/sidang/add', [AdminController::class, 'sidang_add'])->name('admin.sidang_add');
+
+    Route::get('/admin/sidang/revisi_add', [AdminController::class, 'revisi_add'])->name('admin.revisi_add');
+
+    Route::get('/admin/sidang/revisi_edit', [AdminController::class, 'revisi_edit'])->name('admin.revisi_edit');
 });

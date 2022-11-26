@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ isset($proposal) ? 'active' : ''}}" href="{{ route('dosen.proposal') }}">
+                <a class="nav-link {{ isset($proposal) ? 'active' : ''}}" href="{{ route('admin.proposal') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-copy-04 text-info text-sm opacity-10 "></i>
                     </div>
@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ isset($ta) ? 'active' : ''}}"  href="{{ route('dosen.ta') }}">
+                <a class="nav-link {{ isset($ta) ? 'active' : ''}}"  href="{{ route('admin.ta') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
                     </div>
@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ isset($sidang) ? 'active' : ''}}" href="{{ route('dosen.sidang')}}">
+                <a class="nav-link {{ isset($sidang) ? 'active' : ''}}" href="{{ route('admin.sidang')}}">
                     <div class="icon icon-shape icon-sm text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                     </div>

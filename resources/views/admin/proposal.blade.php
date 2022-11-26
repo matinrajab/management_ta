@@ -1,17 +1,18 @@
-<?php 
-$sidang = true;
+<?php
+$proposal = true;
 ?>
 @include('layouts.header');
-@include('layouts.sidebar_dosen');
-<main class="main-content position-relative border-radius-lg ">
+@include('layouts.sidebar_admin');
+
+    <main class="main-content position-relative border-radius-lg ">
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="false">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Sidang</li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Proposal</li>
                 </ol>
-                <h6 class="font-weight-bolder text-white mb-0">Sidang</h6>
+                <h6 class="font-weight-bolder text-white mb-0">Proposal</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -98,72 +99,13 @@ $sidang = true;
                 </div>
             </div>
         </nav>
-        <div class="container-fluid py-4">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mb-4">
-                        <div class="card-header pb-0">
-                            <a href="/dosen/sidang/add" class="btn btn-primary btn-sm ms-auto">Atur Sidang</a>
-                        </div>
-                        <div class="card-body px-0 pt-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mahasiswa</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tempat</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji1</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji2</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nilai</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">15 November 2022</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Gedung Pasca Sarjana</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Ana</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">80</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">lulus</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <a href="/dosen/sidang/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                        <span><h6>Revisi</h6></span>  
+                            <h6>Proposal</h6> 
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -171,8 +113,8 @@ $sidang = true;
                                     <thead>
                                         <tr>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mahasiswa</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bidang</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
@@ -184,19 +126,21 @@ $sidang = true;
                                                 <span class="text-xs font-weight-bold">Alif</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Senin 15 November 2022</span>
+                                                <span class="text-xs font-weight-bold">Monitoring Tanaman Berbasis IOT</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">ertytrew</span>
+                                                <span class="text-xs font-weight-bold">Jaringan</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="badge badge-sm bg-gradient-success">LULUS</span>
+                                                <span class="badge badge-sm bg-gradient-success">Disetujui</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="/dosen/revisi/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>
+                                                <a href="/admin/proposal/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>
+                                                <span class="text-secondary font-weight-bold text-xs"> | </span>
+                                                <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete"> Delete </a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -207,4 +151,26 @@ $sidang = true;
                 </div>
             </div>
         </div>
+        
         @include('layouts.footer')
+    </main>
+
+    <!--   Core JS Files   -->
+    <script src="{{ asset('argon-dashboard-master') }}/assets/js/core/popper.min.js"></script>
+    <script src="{{ asset('argon-dashboard-master') }}/assets/js/core/bootstrap.min.js"></script>
+    <script src="{{ asset('argon-dashboard-master') }}/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="{{ asset('argon-dashboard-master') }}/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{{ asset('argon-dashboard-master') }}/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+</body>
