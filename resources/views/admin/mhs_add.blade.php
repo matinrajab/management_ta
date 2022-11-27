@@ -133,24 +133,25 @@ $mhs = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/admin/mhs/store" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">NRP</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="nrp" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Nama</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="nama_mhs" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Gender</label>
-                                            <select id="gender" class="form-select">
+                                            <select id="gender" name="gender" class="form-select">
                                                 <option>Laki-laki</option>
                                                 <option>Perempuan</option>
                                             </select>
@@ -159,19 +160,19 @@ $mhs = true;
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Phone</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="phone" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Email</label>
-                                            <input class="form-control" type="email">
+                                            <input class="form-control" name="email" type="email">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Password</label>
-                                            <input class="form-control" type="password">
+                                            <input class="form-control" name="password" type="password">
                                             </div>
                                         </div>
                                         <div class="form-group">

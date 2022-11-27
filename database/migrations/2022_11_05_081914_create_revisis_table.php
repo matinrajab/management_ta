@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->string('catatan');
             $table->string('file');
-            $table->enum('status', ['Lulus', 'Belum lulus', 'Proses']);
+            $table->enum('status', ['Lulus', 'Belum lulus', 'Proses'])->default('Proses');
             $table->foreignId('mahasiswa_id');
             $table->foreignId('pembimbing_id');
             $table->timestamps();

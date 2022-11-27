@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Pembimbing;
+use App\Models\Mahasiswa;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -68,7 +72,8 @@ class AdminController extends Controller
 
     public function dosbing()
     {
-        return view('admin.dosbing');
+        $pembimbing = Pembimbing::all();
+        return view('admin.dosbing', ['pembimbing' => $pembimbing]);
     }
 
     public function dosbing_add()
@@ -76,14 +81,79 @@ class AdminController extends Controller
         return view('admin.dosbing_add');
     }
 
-    public function dosbing_edit()
+    public function dosbing_store(Request $data)
     {
-        return view('admin.dosbing_edit');
+        $this->validate($data, [
+            'nama_pembimbing' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        User::create([
+            'name' => $data->nama_pembimbing,
+            'email' => $data->email,
+            'password' => Hash::make($data->password),
+            'type' => 1,
+        ]);
+
+        Pembimbing::create([
+            'nip' => $data->nip,
+            'nama_pembimbing' => $data->nama_pembimbing,
+            'phone' => $data->phone,
+            'email' => $data->email,
+        ]);
+
+        return redirect('/admin/dosbing');
+    }
+
+    public function dosbing_edit($id)
+    {
+        $pembimbing = Pembimbing::find($id);
+        $user = User::where('name', $pembimbing->nama_pembimbing)->first();
+        return view('admin.dosbing_edit', ['pembimbing' => $pembimbing, 'user' => $user]);
+    }
+
+    public function dosbing_update($id, Request $data)
+    {
+        $this->validate($data, [
+            'nip' => 'required',
+            'nama_pembimbing' => 'required',
+            'phone' => 'required',
+            'email' => 'required'
+        ]);
+
+        $pembimbing = Pembimbing::find($id);
+        $user = User::where('name', $pembimbing->nama_pembimbing)->first();
+
+        $pembimbing->nip = $data->nip;
+        $pembimbing->nama_pembimbing = $data->nama_pembimbing;
+        $pembimbing->phone = $data->phone;
+        $pembimbing->email = $data->email;
+        $pembimbing->save();
+
+        $user->name = $data->nama_pembimbing;
+        $user->email = $data->email;
+        if ($data->password !== NULL) {
+            $user->password = Hash::make($data->password);
+        }
+        $user->save();
+
+        return redirect('/admin/dosbing');
+    }
+
+    public function dosbing_hapus($id)
+    {
+        $pembimbing = Pembimbing::find($id);
+        $user = User::where('name', $pembimbing->nama_pembimbing)->first();
+        $pembimbing->delete();
+        $user->delete();
+        return redirect('/admin/dosbing');
     }
 
     public function mhs()
     {
-        return view('admin.mhs');
+        $mahasiswa = Mahasiswa::all();
+        return view('admin.mhs', ['mahasiswa' => $mahasiswa]);
     }
 
     public function mhs_add()
@@ -91,10 +161,75 @@ class AdminController extends Controller
         return view('admin.mhs_add');
     }
 
-    public function mhs_edit()
+    public function mhs_store(Request $data)
     {
-        return view('admin.mhs_edit');
+        $this->validate($data, [
+            'nama_mhs' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        User::create([
+            'name' => $data->nama_mhs,
+            'email' => $data->email,
+            'password' => Hash::make($data->password),
+            'type' => 0,
+        ]);
+
+        Mahasiswa::create([
+            'nrp' => $data->nrp,
+            'nama_mhs' => $data->nama_mhs,
+            'gender' => $data->gender,
+            'phone' => $data->phone,
+            'email' => $data->email,
+        ]);
+
+        return redirect('/admin/mhs');
     }
 
-    
+    public function mhs_edit($id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+        $user = User::where('name', $mahasiswa->nama_mhs)->first();
+        return view('admin.mhs_edit', ['mahasiswa' => $mahasiswa, 'user' => $user]);
+    }
+
+    public function mhs_update($id, Request $data)
+    {
+        $this->validate($data, [
+            'nrp' => 'required',
+            'nama_mhs' => 'required',
+            'gender' => 'required',
+            'phone' => 'required',
+            'email' => 'required'
+        ]);
+
+        $mahasiswa = Mahasiswa::find($id);
+        $user = User::where('name', $mahasiswa->nama_mhs)->first();
+
+        $mahasiswa->nrp = $data->nrp;
+        $mahasiswa->nama_mhs = $data->nama_mhs;
+        $mahasiswa->gender = $data->gender;
+        $mahasiswa->phone = $data->phone;
+        $mahasiswa->email = $data->email;
+        $mahasiswa->save();
+
+        $user->name = $data->nama_mhs;
+        $user->email = $data->email;
+        if ($data->password !== NULL) {
+            $user->password = Hash::make($data->password);
+        }
+        $user->save();
+
+        return redirect('/admin/mhs');
+    }
+
+    public function mhs_hapus($id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+        $user = User::where('name', $mahasiswa->nama_mhs)->first();
+        $mahasiswa->delete();
+        $user->delete();
+        return redirect('/admin/mhs');
+    }
 }

@@ -144,28 +144,30 @@ $mhs = true;
                                         </tr> 
                                     </thead>
                                     <tbody>
+                                        @foreach($mahasiswa->sortBy('nrp') as $m)
                                         <tr>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">3121600</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->nrp }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->nama_mhs }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Laki-laki</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->gender }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">087745345567</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->phone }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">alif@gmail.com</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->email }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="/admin/mhs/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                                <a href="/admin/mhs/edit/{{ $m->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
                                                 <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
+                                                <a href="/admin/mhs/hapus/{{ $m->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

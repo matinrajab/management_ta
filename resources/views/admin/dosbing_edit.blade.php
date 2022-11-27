@@ -133,36 +133,39 @@ $dosbing = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/admin/dosbing/update/{{ $pembimbing->id }}" method="POST" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">NIP</label>
-                                            <input class="form-control" type="text" value="198801062019031009">
+                                            <input class="form-control" name="nip" type="text" value="{{ $pembimbing->nip }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Nama</label>
-                                            <input class="form-control" type="text" value="Pak Yanuar">
+                                            <input class="form-control" name="nama_pembimbing" type="text" value="{{ $pembimbing->nama_pembimbing }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Phone</label>
-                                            <input class="form-control" type="text" value="0877044563378">
+                                            <input class="form-control" name="phone" type="text" value="{{ $pembimbing->phone }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Email</label>
-                                            <input class="form-control" type="email" value="yanuar@gmail.com">
+                                            <input class="form-control" name="email" type="email" value="{{ $pembimbing->email }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Password</label>
-                                            <input class="form-control" type="password">
+                                            <input class="form-control" name="password" type="text">
+                                            <span class="text-xs font-weight-bold">Abaikan jika tidak ingin mengubah password</span>
                                             </div>
                                         </div>
                                         <div class="form-group">

@@ -14,6 +14,6 @@ class Surat extends Model
 
     public function mahasiswa()
     {
-        return $this->belongsTo('App\Model\Mahasiswa');
+        return $this->belongsTo('App\Models\Mahasiswa');
     }
 }

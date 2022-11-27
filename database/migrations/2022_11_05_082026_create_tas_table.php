@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('nilai_dosbing');
             $table->integer('nilai_penguji1');
             $table->integer('nilai_penguji2');
-            $table->enum('status', ['Lulus', 'Belum lulus', 'Proses']);
+            $table->enum('status', ['Lulus', 'Belum lulus', 'Proses'])->default('Proses');
             $table->foreignId('mahasiswa_id');
             $table->foreignId('pembimbing_id');
             $table->timestamps();

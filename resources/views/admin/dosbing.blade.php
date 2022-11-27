@@ -144,28 +144,30 @@ $dosbing = true;
                                         </tr> 
                                     </thead>
                                     <tbody>
+                                        @foreach($pembimbing->sortBy('nip') as $p)
                                         <tr>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">198801062019031009</span>
+                                                <span class="text-xs font-weight-bold">{{ $p->nip }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Pak Yanuar</span>
+                                                <span class="text-xs font-weight-bold">{{ $p->nama_pembimbing }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">0877044563378</span>
+                                                <span class="text-xs font-weight-bold">{{ $p->phone }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">yanuar@gmail.com</span>
+                                                <span class="text-xs font-weight-bold">{{ $p->email }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">1</span>
+                                                <span class="text-xs font-weight-bold">{{ $p->mahasiswa->count() }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="/admin/dosbing/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                                <a href="/admin/dosbing/edit/{{ $p->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
                                                 <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
+                                                <a href="/admin/dosbing/hapus/{{ $p->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

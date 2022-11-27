@@ -133,36 +133,37 @@ $dosbing = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/admin/dosbing/store" method="post" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">NIP</label>
-                                            <input class="form-control" type="text">
+                                                <label for="example-text-input" class="form-control-label">NIP</label>
+                                                <input type="text" class="form-control" name="nip">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Nama</label>
-                                            <input class="form-control" type="text">
+                                                <label for="example-text-input" class="form-control-label">Nama</label>
+                                                <input type="text" class="form-control" name="nama_pembimbing">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Phone</label>
-                                            <input class="form-control" type="text">
+                                                <label for="example-text-input" class="form-control-label">Phone</label>
+                                                <input type="text" class="form-control" name="phone">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Email</label>
-                                            <input class="form-control" type="email">
+                                                <label for="example-text-input" class="form-control-label">Email</label>
+                                                <input type="email" class="form-control" name="email">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Password</label>
-                                            <input class="form-control" type="password">
+                                                <label for="example-text-input" class="form-control-label">Password</label>
+                                                <input type="text" class="form-control" name="password">
                                             </div>
                                         </div>
                                         <div class="form-group">

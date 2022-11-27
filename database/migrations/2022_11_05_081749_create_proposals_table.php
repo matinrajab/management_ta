@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('bidang', ['Basis Data', 'Jaringan', 'Pemrograman Web', 'Aplikasi Mobile']);
             $table->string('pembimbing');
             $table->string('file');
-            $table->enum('status', ['Disetujui', 'Ditolak', 'Proses']);
+            $table->enum('status', ['Disetujui', 'Ditolak', 'Proses'])->default('Proses');
             $table->foreignId('mahasiswa_id');
             $table->foreignId('pembimbing_id');
             $table->timestamps();

@@ -10,15 +10,15 @@ class Revisi extends Model
     use HasFactory;
     protected $table = "revisi";
 
-    protected $fillable = ['status', 'keterangan'];
+    protected $fillable = ['tanggal', 'catatan', 'file', 'status', 'mahasiswa_id', 'pembimbing_id'];
 
     public function mahasiswa()
     {
-        return $this->belongsTo('App\Model\Mahasiswa');
+        return $this->belongsTo('App\Models\Mahasiswa');
     }
 
     public function pembimbing()
     {
-        return $this->belongsTo('App\Model\Pembimbing');
+        return $this->belongsTo('App\Models\Pembimbing');
     }
 }

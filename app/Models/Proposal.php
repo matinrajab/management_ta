@@ -10,15 +10,15 @@ class Proposal extends Model
     use HasFactory;
     protected $table = "proposal";
 
-    protected $fillable = ['judul', 'bidang', 'tgl_seminar', 'status', 'nilai', 'keterangan'];
+    protected $fillable = ['judul', 'bidang', 'pembimbing', 'file', 'status', 'mahasiswa_id', 'pembimbing_id'];
 
     public function mahasiswa()
     {
-        return $this->belongsTo('App\Model\Mahasiswa');
+        return $this->belongsTo('App\Models\Mahasiswa');
     }
 
     public function pembimbing()
     {
-        return $this->belongsTo('App\Model\Pembimbing');
+        return $this->belongsTo('App\Models\Pembimbing');
     }
 }

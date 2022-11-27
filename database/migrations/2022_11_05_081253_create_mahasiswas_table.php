@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('gender', ['Laki-laki', 'Perempuan']);
             $table->string('phone', 15);
             $table->string('email', 100);
-            $table->foreignId('pembimbing_id');
+            $table->foreignId('pembimbing_id')->nullable();
             $table->timestamps();
         });
     }

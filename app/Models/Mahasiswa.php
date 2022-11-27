@@ -10,35 +10,35 @@ class Mahasiswa extends Model
     use HasFactory;
     protected $table = "mahasiswa";
 
-    protected $fillable = ['nrp', 'nama_mhs', 'gender', 'phone', 'email', 'alamat'];
+    protected $fillable = ['nrp', 'nama_mhs', 'gender', 'phone', 'email', 'pembimbing_id'];
 
     public function pembimbing()
     {
-        return $this->belongsTo('App\Model\Pembimbing');
+        return $this->belongsTo('App\Models\Pembimbing');
     }
 
     public function proposal()
     {
-        return $this->hasOne('App\Model\Proposal');
+        return $this->hasOne('App\Models\Proposal');
     }
 
     public function logbook()
     {
-        return $this->hasMany('App\Model\Logbook');
+        return $this->hasMany('App\Models\Logbook');
     }
 
     public function ta()
     {
-        return $this->hasOne('App\Model\Ta');
+        return $this->hasOne('App\Models\Ta');
     }
 
     public function revisi()
     {
-        return $this->hasMany('App\Model\Revisi');
+        return $this->hasMany('App\Models\Revisi');
     }
 
     public function surat()
     {
-        return $this->hasOne('App\Model\Surat');
+        return $this->hasOne('App\Models\Surat');
     }
 }

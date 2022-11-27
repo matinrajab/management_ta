@@ -95,13 +95,25 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('/admin/dosbing/add', [AdminController::class, 'dosbing_add'])->name('admin.dosbing_add');
 
-    Route::get('/admin/dosbing/edit', [AdminController::class, 'dosbing_edit'])->name('admin.dosbing_edit');
+    Route::post('/admin/dosbing/store', [AdminController::class, 'dosbing_store'])->name('admin.dosbing_store');
+
+    Route::get('/admin/dosbing/edit/{id}', [AdminController::class, 'dosbing_edit'])->name('admin.dosbing_edit');
+
+    Route::put('/admin/dosbing/update/{id}', [AdminController::class, 'dosbing_update'])->name('admin.dosbing_update');
+
+    Route::get('/admin/dosbing/hapus/{id}', [AdminController::class, 'dosbing_hapus'])->name('admin.dosbing_hapus');
 
     Route::get('/admin/mhs', [AdminController::class, 'mhs'])->name('admin.mhs');
 
     Route::get('/admin/mhs/add', [AdminController::class, 'mhs_add'])->name('admin.mhs_add');
 
-    Route::get('/admin/mhs/edit', [AdminController::class, 'mhs_edit'])->name('admin.mhs_edit');
+    Route::post('/admin/mhs/store', [AdminController::class, 'mhs_store'])->name('admin.mhs_store');
+
+    Route::get('/admin/mhs/edit/{id}', [AdminController::class, 'mhs_edit'])->name('admin.mhs_edit');
+
+    Route::put('/admin/mhs/update/{id}', [AdminController::class, 'mhs_update'])->name('admin.mhs_update');
+
+    Route::get('/admin/mhs/hapus/{id}', [AdminController::class, 'mhs_hapus'])->name('admin.mhs_hapus');
 
     Route::get('/admin/proposal', [AdminController::class, 'proposal'])->name('admin.proposal');
 

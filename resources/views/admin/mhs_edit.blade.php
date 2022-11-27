@@ -133,45 +133,48 @@ $mhs = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/admin/mhs/update/{{ $mahasiswa->id }}" method="POST" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">NRP</label>
-                                            <input class="form-control" type="text" value="3121600">
+                                            <input class="form-control" name="nrp" type="text" value="{{ $mahasiswa->nrp }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Nama</label>
-                                            <input class="form-control" type="text" value="Alif">
+                                            <input class="form-control" name="nama_mhs" type="text" value="{{ $mahasiswa->nama_mhs }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Gender</label>
-                                            <select id="gender" class="form-select" value="Laki-laki">
-                                                <option>Laki-laki</option>
-                                                <option>Perempuan</option>
+                                            <select id="gender" name="gender" class="form-select">
+                                                <option value="Laki-laki" <?php if($mahasiswa->gender == 'Laki-laki'){ echo 'selected'; } ?>>Laki-laki</option>
+                                                <option value="Perempuan" <?php if($mahasiswa->gender == 'Perempuan'){ echo 'selected'; } ?>>Perempuan</option>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Phone</label>
-                                            <input class="form-control" type="text" value="087745345567">
+                                            <input class="form-control" name="phone" type="text" value="{{ $mahasiswa->phone }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Email</label>
-                                            <input class="form-control" type="email" value="alif@gmail.com">
+                                            <input class="form-control" name="email" type="email" value="{{ $mahasiswa->email }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Password</label>
-                                            <input class="form-control" type="password">
+                                            <input class="form-control" name="password" type="password">
+                                            <span class="text-xs font-weight-bold">Abaikan jika tidak ingin mengubah password</span>
                                             </div>
                                         </div>
                                         <div class="form-group">

@@ -10,30 +10,30 @@ class Pembimbing extends Model
     use HasFactory;
     protected $table = "pembimbing";
 
-    protected $fillable = ['nip', 'nama_pembimbing', 'phone', 'email', 'alamat', 'jumlah'];
+    protected $fillable = ['nip', 'nama_pembimbing', 'phone', 'email', 'jumlah'];
 
     public function mahasiswa()
     {
-        return $this->hasMany('App\Model\Mahasiswa');
+        return $this->hasMany('App\Models\Mahasiswa');
     }
 
     public function proposal()
     {
-        return $this->hasMany('App\Model\Proposal');
+        return $this->hasMany('App\Models\Proposal');
     }
 
     public function logbook()
     {
-        return $this->hasMany('App\Model\Logbook');
+        return $this->hasMany('App\Models\Logbook');
     }
 
     public function ta()
     {
-        return $this->hasMany('App\Model\Ta');
+        return $this->hasMany('App\Models\Ta');
     }
 
     public function revisi()
     {
-        return $this->hasMany('App\Model\Revisi');
+        return $this->hasMany('App\Models\Revisi');
     }
 }
