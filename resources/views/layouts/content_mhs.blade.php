@@ -32,12 +32,24 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Dosen Pembimbing</p>
                     <h5 class="font-weight-bolder">
-                      Pak Yanuar
+                      <?php
+                        if($mahasiswa->pembimbing_id == NULL){
+                          echo '-';
+                        }else{
+                          echo $mahasiswa->proposal->nama_pembimbing;
+                        }
+                      ?>
                     </h5>
-                    <p class="mb-0">
-                      Status Proposal
-                      <span class="text-success text-sm font-weight-bolder">Disetujui</span>
-                    </p>
+                    <p class="mb-0">Status Proposal</p>
+                    <span class="text-success text-sm font-weight-bolder">
+                      <?php
+                        if($mahasiswa->pembimbing_id == NULL){
+                          echo '-';
+                        }else{
+                          echo $mahasiswa->proposal->status;
+                        }
+                      ?>
+                    </span>
                   </div>
                 </div>
                 <div class="col-4 text-end">

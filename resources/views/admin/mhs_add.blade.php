@@ -172,7 +172,7 @@ $mhs = true;
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Password</label>
-                                            <input class="form-control" name="password" type="password">
+                                            <input class="form-control" name="password" type="text">
                                             </div>
                                         </div>
                                         <div class="form-group">

@@ -145,26 +145,32 @@ $proposal = true;
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Monitoring Tanaman Berbasis IOT</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Jaringan</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Pak Yanuar</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm text-uppercase bg-gradient-warning mb-0">Terupload</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">Disetujui</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <a href="/mhs/proposal/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
-                                            </td>
+                                            <?php
+                                                if($mahasiswa->pembimbing_id != NULL){
+                                                    echo '
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">'.$mahasiswa->proposal->judul.'</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">'.$mahasiswa->proposal->bidang.'</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">'.$mahasiswa->proposal->nama_pembimbing.'</span>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <a href="/mhs/proposal/download/'.$mahasiswa->proposal->id.'" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span class="badge badge-sm bg-gradient-success">'.$mahasiswa->proposal->status.'</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <a href="/mhs/proposal/edit/'.$mahasiswa->proposal->id.'" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                                        <span class="text-secondary font-weight-bold text-xs"> | </span>
+                                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
+                                                    </td>
+                                                    ';
+                                                }
+                                            ?>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -174,7 +180,7 @@ $proposal = true;
                 </div>
             </div>
         </div>
-        
+        <br>
         @include('layouts.footer')
     </main>
 

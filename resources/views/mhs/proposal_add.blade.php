@@ -133,29 +133,33 @@ $proposal = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/mhs/proposal/store" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Judul Proposal</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="judul" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Bidang</label>
-                                            <select id="bidang" class="form-select">
+                                            <select id="bidang" name="bidang" class="form-select">
                                                 <option>Basis Data</option>
-                                                <option>Konsep Jaringan</option>
+                                                <option>Jaringan</option>
+                                                <option>Pemrograman Web</option>
+                                                <option>Aplikasi Mobile</option>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Pembimbing</label>
-                                            <select id="dosbing" class="form-select">
-                                                <option>Pak Yanuar</option>
-                                                <option>Pak Mu'a</option>
+                                            <select id="dosbing" name="nama_pembimbing" class="form-select">
+                                                @foreach($pembimbing->sortBy('nama_pembimbing') as $p)
+                                                    <option>{{$p->nama_pembimbing}}</option>
+                                                @endforeach
                                             </select>
                                             </div>
                                         </div>

@@ -10,7 +10,7 @@ class Proposal extends Model
     use HasFactory;
     protected $table = "proposal";
 
-    protected $fillable = ['judul', 'bidang', 'pembimbing', 'file', 'status', 'mahasiswa_id', 'pembimbing_id'];
+    protected $fillable = ['judul', 'bidang', 'nama_pembimbing', 'file', 'status', 'mahasiswa_id', 'pembimbing_id'];
 
     public function mahasiswa()
     {

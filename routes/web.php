@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthLoginController;
 use App\Http\Controllers\MhsController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +36,15 @@ Route::middleware(['auth', 'user-access:mhs'])->group(function () {
 
     Route::get('/mhs/proposal', [MhsController::class, 'proposal'])->name('mhs.proposal');
 
+    Route::get('/mhs/proposal/download/{id}', [MhsController::class, 'proposal_download'])->name('mhs.proposal_download');
+
     Route::get('/mhs/proposal/add', [MhsController::class, 'proposal_add'])->name('mhs.proposal_add');
 
-    Route::get('/mhs/proposal/edit', [MhsController::class, 'proposal_edit'])->name('mhs.proposal_edit');
+    Route::post('/mhs/proposal/store', [MhsController::class, 'proposal_store'])->name('mhs.proposal_store');
+
+    Route::get('/mhs/proposal/edit/{id}', [MhsController::class, 'proposal_edit'])->name('mhs.proposal_edit');
+
+    Route::put('/mhs/proposal/update/{id}', [MhsController::class, 'proposal_update'])->name('mhs.proposal_update');
 
     Route::get('/mhs/ta', [MhsController::class, 'ta'])->name('mhs.ta');
 
