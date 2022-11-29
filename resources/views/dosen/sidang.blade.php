@@ -121,34 +121,44 @@ $sidang = true;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">15 November 2022</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Gedung Pasca Sarjana</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Ana</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">80</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">lulus</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <a href="/dosen/sidang/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($pembimbing->mahasiswa as $m)
+                                            @if ($m->ta)
+                                            <tr>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $m->nama_mhs }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $m->ta->tanggal }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $m->ta->tempat }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $m->ta->nama_penguji1 }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $m->ta->nama_penguji2 }}</span>
+                                                </td>
+                                                @php
+                                                    $nilai = ($m->ta->nilai_penguji1 + $m->ta->nilai_penguji2 + $m->ta->nilai_dosbing) / 3;
+                                                    if ($nilai == 0) {
+                                                        $nilai = NULL;
+                                                    }
+                                                @endphp
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm bg-gradient-success">{{ $nilai }}</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm bg-gradient-success">{{ $m->ta->status }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <a href="/dosen/sidang/edit/{{ $m->ta->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                                    <span class="text-secondary font-weight-bold text-xs"> | </span>
+                                                    <a href="/dosen/sidang/hapus/{{ $m->ta->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

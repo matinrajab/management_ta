@@ -6,7 +6,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Selamat Datang di Website Manajement</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Selamat Datang di Website Management</p>
                     <h5 class="font-weight-bolder">
                       Tugas Akhir
                     </h5>

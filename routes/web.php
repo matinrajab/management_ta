@@ -46,11 +46,19 @@ Route::middleware(['auth', 'user-access:mhs'])->group(function () {
 
     Route::put('/mhs/proposal/update/{id}', [MhsController::class, 'proposal_update'])->name('mhs.proposal_update');
 
+    Route::get('/mhs/proposal/hapus/{id}', [MhsController::class, 'proposal_hapus'])->name('mhs.proposal_hapus');
+
     Route::get('/mhs/ta', [MhsController::class, 'ta'])->name('mhs.ta');
 
     Route::get('/mhs/ta/add', [MhsController::class, 'ta_add'])->name('mhs.ta_add');
 
-    Route::get('/mhs/ta/edit', [MhsController::class, 'ta_edit'])->name('mhs.ta_edit');
+    Route::post('/mhs/ta/store', [MhsController::class, 'ta_store'])->name('mhs.ta_store');
+
+    Route::get('/mhs/ta/edit/{id}', [MhsController::class, 'ta_edit'])->name('mhs.ta_edit');
+
+    Route::put('/mhs/ta/update/{id}', [MhsController::class, 'ta_update'])->name('mhs.ta_update');
+
+    Route::get('/mhs/ta/hapus/{id}', [MhsController::class, 'ta_hapus'])->name('mhs.ta_hapus');
 
     Route::get('/mhs/sidang', [MhsController::class, 'sidang'])->name('mhs.sidang');
 
@@ -72,7 +80,13 @@ Route::middleware(['auth', 'user-access:dosen'])->group(function () {
 
     Route::get('/dosen', [DosenController::class, 'home'])->name('dosen.dashboard');
 
-    Route::get('/dosen/mhs', [DosenController::class, 'mhs'])->name('dosen.daftar_mhs');
+    Route::get('/dosen/proposal', [DosenController::class, 'proposal'])->name('dosen.proposal');
+
+    Route::get('/dosen/proposal/download/{id}', [DosenController::class, 'proposal_download'])->name('dosen.proposal_download');
+
+    Route::get('/dosen/proposal/edit/{id}', [DosenController::class, 'proposal_edit'])->name('dosen.proposal_edit');
+
+    Route::put('/dosen/proposal/update/{id}', [DosenController::class, 'proposal_update'])->name('dosen.proposal_update');
 
     Route::get('/dosen/ta', [DosenController::class, 'ta'])->name('dosen.ta');
 
@@ -80,13 +94,15 @@ Route::middleware(['auth', 'user-access:dosen'])->group(function () {
 
     Route::get('/dosen/sidang/add', [DosenController::class, 'sidang_add'])->name('dosen.sidang_add');
 
-    Route::get('/dosen/sidang/edit', [DosenController::class, 'sidang_edit'])->name('dosen.sidang_edit');
+    Route::post('/dosen/sidang/store', [DosenController::class, 'sidang_store'])->name('dosen.sidang_store');
 
-    Route::get('/dosen/proposal', [DosenController::class, 'proposal'])->name('dosen.proposal');
+    Route::get('/dosen/sidang/edit/{id}', [DosenController::class, 'sidang_edit'])->name('dosen.sidang_edit');
 
-    Route::get('/dosen/proposal/edit', [DosenController::class, 'proposal_edit'])->name('dosen.proposal_edit');
+    Route::put('/dosen/sidang/update/{id}', [DosenController::class, 'sidang_update'])->name('dosen.sidang_update');
 
     Route::get('/dosen/revisi/edit', [DosenController::class, 'revisi_edit'])->name('dosen.revisi_edit');
+
+    Route::get('/dosen/mhs', [DosenController::class, 'mhs'])->name('dosen.daftar_mhs');
 });
 
 /*------------------------------------------
@@ -105,6 +121,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::post('/admin/dosbing/store', [AdminController::class, 'dosbing_store'])->name('admin.dosbing_store');
 
     Route::get('/admin/dosbing/edit/{id}', [AdminController::class, 'dosbing_edit'])->name('admin.dosbing_edit');
+
+    Route::put('/admin/dosbing/update/{id}', [AdminController::class, 'dosbing_update'])->name('admin.dosbing_update');
 
     Route::put('/admin/dosbing/update/{id}', [AdminController::class, 'dosbing_update'])->name('admin.dosbing_update');
 

@@ -1,5 +1,5 @@
 <?php 
-$proposal = true;
+$proposal_page = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,7 +128,11 @@ $proposal = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <a href="/mhs/proposal/add" class="btn btn-primary btn-sm ms-auto">Tambah Proposal</a>
+                            @if ($mahasiswa->pembimbing_id != NULL)
+                                <span><h6>Proposal</h6></span>
+                            @else
+                                <a href="/mhs/proposal/add" class="btn btn-primary btn-sm ms-auto">Tambah Proposal</a>
+                            @endif
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -144,34 +148,30 @@ $proposal = true;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <?php
-                                                if($mahasiswa->pembimbing_id != NULL){
-                                                    echo '
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-xs font-weight-bold">'.$mahasiswa->proposal->judul.'</span>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-xs font-weight-bold">'.$mahasiswa->proposal->bidang.'</span>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-xs font-weight-bold">'.$mahasiswa->proposal->nama_pembimbing.'</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <a href="/mhs/proposal/download/'.$mahasiswa->proposal->id.'" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="badge badge-sm bg-gradient-success">'.$mahasiswa->proposal->status.'</span>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <a href="/mhs/proposal/edit/'.$mahasiswa->proposal->id.'" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                        <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
-                                                    </td>
-                                                    ';
-                                                }
-                                            ?>
-                                        </tr>
+                                        @if ($mahasiswa->pembimbing_id != NULL)
+                                            <tr>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $mahasiswa->proposal->judul }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $mahasiswa->proposal->bidang }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $mahasiswa->proposal->nama_pembimbing }}</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <a href="/mhs/proposal/download/{{ $mahasiswa->proposal->id }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm bg-gradient-success">{{ $mahasiswa->proposal->status }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <a href="/mhs/proposal/edit/{{ $mahasiswa->proposal->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                                    <span class="text-secondary font-weight-bold text-xs"> | </span>
+                                                    <a href="/mhs/proposal/hapus/{{ $mahasiswa->proposal->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

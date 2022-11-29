@@ -1,5 +1,5 @@
 <?php 
-$ta = true;
+$ta_page = true;
 ?>
 @include('layouts.header');
 @include('layouts.sidebar_dosen');
@@ -118,20 +118,24 @@ $ta = true;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Senin 15 November 2022</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Pembahasan BAB 1</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">perlu ditambahkan latar belakang yang jelas</span>
-                                            </td>
-                                        </tr>
+                                        @foreach ($pembimbing->mahasiswa->sortBy('nama_mhs') as $m)
+                                            @foreach ($m->logbook as $l)
+                                                <tr>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">{{ $m->nama_mhs }}</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">{{ $l->tanggal }}</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">{{ $l->kegiatan }}</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">{{ $l->catatan }}</span>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

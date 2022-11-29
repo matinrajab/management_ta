@@ -1,5 +1,5 @@
 <?php 
-$proposal = true;
+$proposal_page = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">

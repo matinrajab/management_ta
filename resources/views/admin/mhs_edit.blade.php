@@ -153,8 +153,8 @@ $mhs = true;
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Gender</label>
                                             <select id="gender" name="gender" class="form-select">
-                                                <option value="Laki-laki" <?php if($mahasiswa->gender == 'Laki-laki'){ echo 'selected'; } ?>>Laki-laki</option>
-                                                <option value="Perempuan" <?php if($mahasiswa->gender == 'Perempuan'){ echo 'selected'; } ?>>Perempuan</option>
+                                                <option value="Laki-laki" @if ($mahasiswa->gender == 'Laki-laki') {{ 'selected' }} @endif>Laki-laki</option>
+                                                <option value="Perempuan" @if ($mahasiswa->gender == 'Perempuan') {{ 'selected' }} @endif>Perempuan</option>
                                             </select>
                                             </div>
                                         </div>

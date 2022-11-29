@@ -143,23 +143,25 @@ $mhs = true;
                                         </tr> 
                                     </thead>
                                     <tbody>
+                                        @foreach ($pembimbing->mahasiswa as $m)
                                         <tr>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">3121600</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->nrp }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->nama_mhs }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Laki-laki</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->gender }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">087745345567</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->phone }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">alif@gmail.com</span>
+                                                <span class="text-xs font-weight-bold">{{ $m->email }}</span>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -168,7 +170,7 @@ $mhs = true;
                 </div>
             </div>
         </div>
-        
+        <br>
         @include('layouts.footer')
     </main>
 

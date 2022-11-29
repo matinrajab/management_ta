@@ -133,72 +133,71 @@ $sidang = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/dosen/sidang/update/{{ $ta->id }}" method="POST" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Mahasiswa</label>
-                                            <select id="mahasiswa" class="form-select">
-                                                <option>Alif</option>
-                                                <option>Ana</option>
-                                            </select>
+                                            <input class="form-control" type="text" value="{{ $mahasiswa->nama_mhs }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Judul Proposal</label>
-                                            <input class="form-control" type="text" value="Monitoring Tanaman Berbasis IOT" readonly>
+                                            <input class="form-control" name="" type="text" value="{{ $ta->judul }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Tanggal</label>
-                                            <input class="form-control" type="date">
+                                            <input class="form-control" name="" type="date" value="{{ $ta->tanggal }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Tempat</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="" type="text" value="{{ $ta->tempat }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Penguji 1</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="" type="text" value="{{ $ta->nama_penguji1 }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Penguji 2</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="" type="text" value="{{ $ta->nama_penguji2 }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Nilai Penguji 1</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="" type="text" value="{{ $ta->nilai_penguji1 }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Nilai Penguji 2</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="" type="text" value="{{ $ta->nilai_penguji2 }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Nilai Dosen Pembimbing</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="" type="text" value="{{ $ta->nilai_dosbing }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Status</label>
-                                            <select id="dosbing" class="form-select">
-                                                <option>Proses</option>
-                                                <option>Lulus</option>
-                                                <option>Belum Lulus</option>
+                                            <select id="dosbing" name="status" class="form-select">
+                                                <option value="Proses" @if ($ta->status == 'Proses') {{ 'selected' }} @endif>Proses</option>
+                                                <option value="Lulus" @if ($ta->status == 'Lulus') {{ 'selected' }} @endif>Lulus</option>
+                                                <option value="Belum lulus" @if ($ta->status == 'Belum lulus') {{ 'selected' }} @endif>Belum Lulus</option>
                                             </select>
                                             </div>
                                         </div>

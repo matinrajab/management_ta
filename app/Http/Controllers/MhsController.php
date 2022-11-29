@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Logbook;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pembimbing;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
-use GuzzleHttp\Handler\Proxy;
+use App\Models\Ta;
 use Illuminate\Support\Facades\Auth;
+use File;
 
 class MhsController extends Controller
 {
@@ -99,19 +101,115 @@ class MhsController extends Controller
         return view('mhs.proposal_edit', ['proposal' => $proposal]);
     }
 
+    public function proposal_update($id, Request $data)
+    {
+        $this->validate($data, [
+            'judul' => 'required',
+            'bidang' => 'required',
+        ]);
+
+        $proposal = Proposal::find($id);
+
+        // cek apakah file diganti
+        if ($data->file('file')) {
+            $this->validate($data, [
+                'file' => 'required|file|mimes:doc,docx,pdf',
+            ]);
+            File::delete('file_upload/' . $proposal->file);
+            $file = $data->file('file');
+            $nama_file = time() . "_" . $file->getClientOriginalName();
+            $tujuan_upload = 'file_upload';
+            $file->move($tujuan_upload, $nama_file);
+
+            $proposal->file = $nama_file;
+        }
+
+        $proposal->judul = $data->judul;
+        $proposal->bidang = $data->bidang;
+        $proposal->save();
+
+        return redirect('/mhs/proposal');
+    }
+
+    public function proposal_hapus($id)
+    {
+        // hapus file dari direktori
+        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
+        $proposal = Proposal::find($id);
+        File::delete('file_upload/' . $proposal->file);
+
+        // hapus data pada database
+        Proposal::find($id)->delete();
+
+        $mahasiswa->pembimbing_id = NULL;
+        $mahasiswa->save();
+
+        return redirect()->back();
+    }
+
     public function ta()
     {
-        return view('mhs.ta');
+        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
+        return view('mhs.ta', ['mahasiswa' => $mahasiswa]);
     }
 
     public function ta_add()
     {
-        return view('mhs.ta_add');
+        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
+        return view('mhs.ta_add', ['mahasiswa' => $mahasiswa]);
     }
 
-    public function ta_edit()
+    public function ta_store(Request $data)
     {
-        return view('mhs.ta_edit');
+        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
+
+        $this->validate($data, [
+            'tanggal' => 'required',
+            'kegiatan' => 'required',
+            'catatan' => 'required'
+        ]);
+
+        Logbook::create([
+            'nama_pembimbing' => $data->nama_pembimbing,
+            'tanggal' => $data->tanggal,
+            'kegiatan' => $data->kegiatan,
+            'catatan' => $data->catatan,
+            'mahasiswa_id' => $mahasiswa->id,
+            'pembimbing_id' => $mahasiswa->pembimbing->id,
+        ]);
+
+        return redirect('/mhs/ta');
+    }
+
+    public function ta_edit($id)
+    {
+        $logbook = Logbook::find($id);
+        return view('mhs.ta_edit', ['logbook' => $logbook]);
+    }
+
+    public function ta_update($id, Request $data)
+    {
+        $this->validate($data, [
+            'tanggal' => 'required',
+            'kegiatan' => 'required',
+            'catatan' => 'required'
+        ]);
+
+        $logbook = Logbook::find($id);
+
+        $logbook->tanggal = $data->tanggal;
+        $logbook->kegiatan = $data->kegiatan;
+        $logbook->catatan = $data->catatan;
+        $logbook->save();
+
+        return redirect('/mhs/ta');
+    }
+
+    public function ta_hapus($id)
+    {
+        $logbook = Logbook::find($id);
+        $logbook->delete();
+        return redirect()->back();
     }
 
     public function sidang()

@@ -1,5 +1,5 @@
 <?php 
-$proposal = true;
+$proposal_page = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -140,25 +140,31 @@ $proposal = true;
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Judul Proposal</label>
-                                            <input class="form-control" name="judul" type="text" value={{$proposal->judul }}>
+                                            <input class="form-control" name="judul" type="text" value="{{ $proposal->judul }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Bidang</label>
-                                            <input class="form-control" name="bidang" type="text" value={{$proposal->bidang }} readonly>
+                                            <select id="bidang" name="bidang" class="form-select">
+                                                <option value="Basis Data" <?php if($proposal->bidang == 'Basis Data'){ echo 'selected'; } ?>>Basis Data</option>
+                                                <option value="Jaringan" <?php if($proposal->bidang == 'Jaringan'){ echo 'selected'; } ?>>Jaringan</option>
+                                                <option value="Pemrograman Web" <?php if($proposal->bidang == 'Pemrograman Web'){ echo 'selected'; } ?>>Pemrograman Web</option>
+                                                <option value="Aplikasi Mobile" <?php if($proposal->bidang == 'Aplikasi Mobile'){ echo 'selected'; } ?>>Aplikasi Mobile</option>
+                                            </select>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Pembimbing</label>
-                                            <input class="form-control" name="nama_pembimbing" type="text" value={{$proposal->nama_pembimbing }} readonly>
+                                            <input class="form-control" name="nama_pembimbing" type="text" value="{{ $proposal->nama_pembimbing }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">File Proposal</label>
                                             <input class="form-control" type="file" name="file">
+                                            <span class="text-xs font-weight-bold">Abaikan jika tidak ingin mengubah file</span>
                                             </div>
                                         </div>
                                         <div class="form-group">

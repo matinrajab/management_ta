@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Logbook;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Pembimbing;
+use App\Models\Mahasiswa;
+use App\Models\Proposal;
+use App\Models\Ta;
+use Illuminate\Support\Facades\Auth;
 
 class DosenController extends Controller
 {
@@ -16,43 +23,111 @@ class DosenController extends Controller
         return view('dosen.dashboard');
     }
 
-    public function mhs()
+    public function proposal()
     {
-        return view('dosen.daftar_mhs');
+        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
+        return view('dosen.proposal', ['pembimbing' => $pembimbing]);
+    }
+
+    public function proposal_download($id)
+    {
+        $proposal = Proposal::find($id);
+
+        $dir = 'file_upload/';
+        $filename = $proposal->file;
+        $file_path = $dir . $filename;
+        $ctype = "application/octet-stream";
+
+        if (!empty($file_path) && file_exists($file_path)) {
+            header("Pragma:public");
+            header("Expired:0");
+            header("Cache-Control:must-revalidate");
+            header("Content-Control:public");
+            header("Content-Description: File Transfer");
+            header("Content-Type: $ctype");
+            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
+            header("Content-Transfer-Encoding:binary");
+            header("Content-Length:" . filesize($file_path));
+            flush();
+            readfile($file_path);
+            return redirect()->back();
+        }
+    }
+
+    public function proposal_edit($id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+        return view('dosen.proposal_edit', ['mahasiswa' => $mahasiswa]);
+    }
+
+    public function proposal_update($id, Request $data)
+    {
+        $proposal = proposal::find($id);
+
+        $proposal->status = $data->status;
+        $proposal->save();
+
+        return redirect('/dosen/proposal');
     }
 
     public function ta()
     {
-        return view('dosen.ta');
+        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
+        return view('dosen.ta', ['pembimbing' => $pembimbing]);
     }
 
     public function sidang()
     {
-        return view('dosen.sidang');
+        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
+        return view('dosen.sidang', ['pembimbing' => $pembimbing]);
     }
 
     public function sidang_add()
     {
-        return view('dosen.sidang_add');
+        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
+        return view('dosen.sidang_add', ['pembimbing' => $pembimbing]);
     }
 
-    public function sidang_edit()
+    public function sidang_store(Request $data)
     {
-        return view('dosen.sidang_edit');
+        $mahasiswa = Mahasiswa::where('nama_mhs', $data->nama_mhs)->first();
+
+        $this->validate($data, [
+            'nama_mhs' => 'required',
+            'tanggal' => 'required',
+            'tempat' => 'required',
+            'nama_penguji1' => 'required',
+            'nama_penguji2' => 'required',
+        ]);
+
+        Ta::create([
+            'judul' => $mahasiswa->proposal->judul,
+            'tanggal' => $data->tanggal,
+            'tempat' => $data->tempat,
+            'nama_penguji1' => $data->nama_penguji1,
+            'nama_penguji2' => $data->nama_penguji2,
+            'mahasiswa_id' => $mahasiswa->id,
+            'pembimbing_id' => $mahasiswa->pembimbing->id,
+        ]);
+
+        return redirect('/dosen/sidang');
     }
 
-    public function proposal()
+    public function sidang_edit($id)
     {
-        return view('dosen.proposal');
-    }
-
-    public function proposal_edit()
-    {
-        return view('dosen.proposal_edit');
+        $ta = Ta::find($id);
+        $mahasiswa = Mahasiswa::where('id', $ta->mahasiswa_id)->first();
+        return view('dosen.sidang_edit', ['ta' => $ta], ['mahasiswa' => $mahasiswa]);
     }
 
     public function revisi_edit()
     {
         return view('dosen.revisi_edit');
+    }
+
+    public function mhs()
+    {
+        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
+        return view('dosen.daftar_mhs', ['pembimbing' => $pembimbing]);
     }
 }

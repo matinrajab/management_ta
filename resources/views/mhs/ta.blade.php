@@ -1,5 +1,5 @@
 <?php 
-$ta = true;
+$ta_page = true;
 ?>
 @include('layouts.header');
 @include('layouts.sidebar_mhs');
@@ -104,13 +104,18 @@ $ta = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <a href="/mhs/ta/add" class="btn btn-primary btn-sm ms-auto">Tambah Logbook</a>
+                            @if ($mahasiswa->pembimbing_id != NULL)
+                                <a href="/mhs/ta/add" class="btn btn-primary btn-sm ms-auto">Tambah Logbook</a>
+                            @else
+                                <span><h6>Logbook</h6></span>   
+                            @endif
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
+
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Pembimbing</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kegiatan</th>
@@ -120,25 +125,27 @@ $ta = true;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Pak Yanuar</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">23/11/2022</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Pembahasan BAB 1</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">perlu ditambahkan latar belakang yang jelas</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <a href="/mhs/ta/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
-                                            </td>
-                                        </tr>
+                                        @foreach($mahasiswa->logbook as $l)
+                                            <tr>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $l->nama_pembimbing }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $l->tanggal }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $l->kegiatan }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $l->catatan }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <a href="/mhs/ta/edit/{{ $l->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                                    <span class="text-secondary font-weight-bold text-xs"> | </span>
+                                                    <a href="/mhs/ta/hapus/{{ $l->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

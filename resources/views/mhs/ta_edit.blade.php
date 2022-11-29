@@ -1,5 +1,5 @@
 <?php 
-$ta = true;
+$ta_page = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,30 +133,32 @@ $ta = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/mhs/ta/update/{{ $logbook->id }}" method="POST" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Pembimbing</label>
-                                            <input class="form-control" type="text" value="Pak Yanuar" readonly>
+                                            <input class="form-control" name="nama_pembimbing" type="text" value="{{ $logbook->nama_pembimbing }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Tanggal</label>
-                                            <input class="form-control" type="date" value="23/11/2022">
+                                            <input class="form-control" name="tanggal" type="date" value="{{ $logbook->tanggal }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Kegiatan</label>
-                                            <input class="form-control" type="text" value="Pembahasan BAB 1">
+                                            <input class="form-control" name="kegiatan" type="text" value="{{ $logbook->kegiatan }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Catatan</label>
-                                            <input class="form-control" type="text" value="perlu ditambahkan latar belakang yang jelas">
+                                            <input class="form-control" name="catatan" type="text" value="{{ $logbook->catatan }}">
                                             </div>
                                         </div>
                                         <div class="form-group">

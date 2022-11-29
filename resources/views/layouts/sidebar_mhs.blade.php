@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ isset($proposal) ? 'active' : ''}}" href="{{ route('mhs.proposal') }}">
+                    <a class="nav-link {{ isset($proposal_page) ? 'active' : ''}}" href="{{ route('mhs.proposal') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-single-copy-04 text-info text-sm opacity-10 "></i>
                         </div>
@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ isset($ta) ? 'active' : ''}}"  href="{{ route('mhs.ta') }}">
+                    <a class="nav-link {{ isset($ta_page) ? 'active' : ''}}"  href="{{ route('mhs.ta') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
                         </div>
