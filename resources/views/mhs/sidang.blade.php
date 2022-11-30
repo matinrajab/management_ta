@@ -116,33 +116,77 @@ $sidang = true;
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji1</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji2</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nilai</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grade</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">Monitoring Tanaman Berbasis IOT</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">23 November 2022</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">Gedung D4</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">Alif</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">Ana</span>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">80</span>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-success">lulus</span>
-                                        </td>
-                                    </tr>
+                                    @if ($mahasiswa->ta)
+                                        <tr>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">{{ $mahasiswa->ta->judul }}</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">{{ $mahasiswa->ta->tanggal }}</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">{{ $mahasiswa->ta->tempat }}</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">{{ $mahasiswa->ta->nama_penguji1 }}</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <span class="text-xs font-weight-bold">{{ $mahasiswa->ta->nama_penguji2 }}</span>
+                                            </td>
+                                            @php
+                                                $nilai = ($mahasiswa->ta->nilai_penguji1 + $mahasiswa->ta->nilai_penguji2 + $mahasiswa->ta->nilai_dosbing) / 3;
+                                                if ($nilai == 0) {
+                                                    $nilai = NULL;
+                                                }
+                                                if ($nilai >= 81) {
+                                                    $grade = 'A';
+                                                }else if ($nilai >= 71) {
+                                                    $grade = 'AB';
+                                                }else if ($nilai >= 66) {
+                                                    $grade = 'B';
+                                                }else if ($nilai >= 61) {
+                                                    $grade = 'BC';
+                                                }else if ($nilai >= 56) {
+                                                    $grade = 'C';
+                                                }else if ($nilai >= 41) {
+                                                    $grade = 'D';
+                                                }else if ($nilai > 0) {
+                                                    $grade = 'E';
+                                                }else {
+                                                    $grade = NULL;
+                                                }
+                                            @endphp
+                                            @if ($nilai >= 56)
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">{{ $nilai }}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">{{ $grade }}</span>
+                                            </td>   
+                                            @else
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-danger">{{ $nilai }}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-danger">{{ $grade }}</span>
+                                            </td>
+                                            @endif
+                                            <td class="align-middle text-center text-sm">
+                                                @if ($nilai >= 56)
+                                                    <span class="badge badge-sm bg-gradient-success">{{ $mahasiswa->ta->status }}</span>
+                                                @elseif($nilai > 0)
+                                                    <span class="badge badge-sm bg-gradient-danger">{{ $mahasiswa->ta->status }}</span>
+                                                @elseif($nilai == NULL)
+                                                    <span class="badge badge-sm bg-gradient-warning">{{ $mahasiswa->ta->status }}</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -152,13 +196,28 @@ $sidang = true;
         </div>
     </div>
 
+    @if ($mahasiswa->ta)
+    @if ($mahasiswa->ta->status == 'Belum lulus')
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <span><h6>Revisi</h6></span> 
-                        <a href="/mhs/sidang/revisi_add" class="btn btn-primary btn-sm ms-auto">Tambah Revisi</a>
+                        @php
+                            $lulus = false;
+                        @endphp
+                        @foreach ($mahasiswa->revisi as $r)
+                            @php
+                                if($r->status == 'Lulus'){
+                                    $lulus = true;
+                                    break;
+                                }
+                            @endphp
+                        @endforeach
+                        @if ($lulus == false)
+                            <a href="/mhs/sidang/revisi_add" class="btn btn-primary btn-sm ms-auto">Tambah Revisi</a>
+                        @endif
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -174,25 +233,34 @@ $sidang = true;
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($mahasiswa->revisi as $r)
                                     <tr>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">23 November 2022</span>
+                                            <span class="text-xs font-weight-bold">{{ $r->tanggal }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">qwergh</span>
+                                            <span class="text-xs font-weight-bold">{{ $r->catatan }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">Terupload</span>
+                                            <a href="/mhs/sidang/revisi_download/{{ $r->id }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="badge badge-sm bg-gradient-success text-xs font-weight-bold">lulus</span>
+                                            @if ($r->status == 'Lulus')
+                                                <span class="badge badge-sm bg-gradient-success">{{ $r->status }}</span>
+                                            @elseif($r->status == 'Belum lulus')
+                                                <span class="badge badge-sm bg-gradient-danger">{{ $r->status }}</span>
+                                            @else
+                                                <span class="badge badge-sm bg-gradient-warning">{{ $r->status }}</span>
+                                            @endif
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="/mhs/sidang/revisi_edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
+                                            <a href="/mhs/sidang/revisi_edit/{{ $r->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
                                             <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                            <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
+                                            <a href="/mhs/sidang/revisi_hapus/{{ $r->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
                                         </td>
                                     </tr>
+                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -201,5 +269,8 @@ $sidang = true;
             </div>
         </div>
     </div>
+    @endif
+    @endif
+
     @include('layouts.footer');
 </main>

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Pembimbing;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
+use App\Models\Revisi;
 use App\Models\Ta;
 use Illuminate\Support\Facades\Auth;
 
@@ -120,9 +121,86 @@ class DosenController extends Controller
         return view('dosen.sidang_edit', ['ta' => $ta], ['mahasiswa' => $mahasiswa]);
     }
 
-    public function revisi_edit()
+    public function sidang_update($id, Request $data)
     {
-        return view('dosen.revisi_edit');
+        $this->validate($data, [
+            'tanggal' => 'required',
+            'tempat' => 'required',
+            'nama_penguji1' => 'required',
+            'nama_penguji2' => 'required',
+            'nilai_penguji1' => 'required',
+            'nilai_penguji2' => 'required',
+            'nilai_dosbing' => 'required',
+        ]);
+
+        $ta = Ta::find($id);
+
+        $ta->tanggal = $data->tanggal;
+        $ta->tempat = $data->tempat;
+        $ta->nama_penguji1 = $data->nama_penguji1;
+        $ta->nama_penguji2 = $data->nama_penguji2;
+        $ta->nilai_penguji1 = $data->nilai_penguji1;
+        $ta->nilai_penguji2 = $data->nilai_penguji2;
+        $ta->nilai_dosbing = $data->nilai_dosbing;
+        $nilai = ($ta->nilai_penguji1 + $ta->nilai_penguji2 + $ta->nilai_dosbing) / 3;
+        if ($nilai >= 56) {
+            $ta->status = 'Lulus';
+        } else {
+            $ta->status = 'Belum lulus';
+        }
+
+        $ta->save();
+
+        return redirect('/dosen/sidang');
+    }
+
+    public function sidang_hapus($id)
+    {
+        $ta = Ta::find($id);
+        $ta->delete();
+        return redirect()->back();
+    }
+
+    public function revisi_download($id)
+    {
+        $revisi = Revisi::find($id);
+
+        $dir = 'file_upload/';
+        $filename = $revisi->file;
+        $file_path = $dir . $filename;
+        $ctype = "application/octet-stream";
+
+        if (!empty($file_path) && file_exists($file_path)) {
+            header("Pragma:public");
+            header("Expired:0");
+            header("Cache-Control:must-revalidate");
+            header("Content-Control:public");
+            header("Content-Description: File Transfer");
+            header("Content-Type: $ctype");
+            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
+            header("Content-Transfer-Encoding:binary");
+            header("Content-Length:" . filesize($file_path));
+            flush();
+            readfile($file_path);
+            return redirect()->back();
+        }
+    }
+
+    public function revisi_edit($id)
+    {
+        $revisi = Revisi::find($id);
+        $mahasiswa = Mahasiswa::find($revisi->mahasiswa_id);
+        return view('dosen.revisi_edit', ['revisi' => $revisi, 'mahasiswa' => $mahasiswa]);
+    }
+
+    public function revisi_update($id, Request $data)
+    {
+        $revisi = Revisi::find($id);
+
+        $revisi->status = $data->status;
+        $revisi->save();
+
+        return redirect('/dosen/sidang');
     }
 
     public function mhs()

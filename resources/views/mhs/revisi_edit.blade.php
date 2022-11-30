@@ -111,30 +111,27 @@ $sidang = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/mhs/sidang/revisi_update/{{ $revisi->id }}" method="POST" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Tanggal</label>
-                                            <input class="form-control" type="date">
+                                            <input class="form-control" name="tanggal" type="date" value="{{ $revisi->tanggal }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Catatan</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="catatan" type="text" value="{{ $revisi->catatan }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">File</label>
-                                            <input class="form-control" type="file" value="file">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Status</label>
-                                            <input class="form-control bg-success text-center text-light fw-bold" type="text" value="LULUS" readonly>
+                                            <input class="form-control" name="file" type="file">
+                                            <span class="text-xs font-weight-bold">Abaikan jika tidak ingin mengubah file</span>
                                             </div>
                                         </div>
                                         <div class="form-group">

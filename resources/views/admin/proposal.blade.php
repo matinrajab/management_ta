@@ -121,28 +121,31 @@ $proposal = true;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Monitoring Tanaman Berbasis IOT</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Jaringan</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="badge badge-sm bg-gradient-success">Disetujui</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <a href="/admin/proposal/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>
-                                                <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete"> Delete </a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($pembimbing as $p)
+                                            @foreach($p->mahasiswa as $m)
+                                            <tr>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $m->nama_mhs }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $m->proposal->judul }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $m->proposal->bidang }}</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <a href="/admin/proposal/download/{{ $m->proposal->id }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="badge badge-sm bg-gradient-success">{{ $m->proposal->status }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <a href="/admin/proposal/edit/{{ $m->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>

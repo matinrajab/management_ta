@@ -146,59 +146,54 @@ $sidang = true;
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Judul Proposal</label>
-                                            <input class="form-control" name="" type="text" value="{{ $ta->judul }}" readonly>
+                                            <input class="form-control" name="judul" type="text" value="{{ $ta->judul }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Tanggal</label>
-                                            <input class="form-control" name="" type="date" value="{{ $ta->tanggal }}">
+                                            <input class="form-control" name="tanggal" type="date" value="{{ $ta->tanggal }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Tempat</label>
-                                            <input class="form-control" name="" type="text" value="{{ $ta->tempat }}">
+                                            <input class="form-control" name="tempat" type="text" value="{{ $ta->tempat }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Penguji 1</label>
-                                            <input class="form-control" name="" type="text" value="{{ $ta->nama_penguji1 }}">
+                                            <input class="form-control" name="nama_penguji1" type="text" value="{{ $ta->nama_penguji1 }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Dosen Penguji 2</label>
-                                            <input class="form-control" name="" type="text" value="{{ $ta->nama_penguji2 }}">
+                                            <input class="form-control" name="nama_penguji2" type="text" value="{{ $ta->nama_penguji2 }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Nilai Penguji 1</label>
-                                            <input class="form-control" name="" type="text" value="{{ $ta->nilai_penguji1 }}">
+                                            <input class="form-control" name="nilai_penguji1" type="text" value="{{ $ta->nilai_penguji1 }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Nilai Penguji 2</label>
-                                            <input class="form-control" name="" type="text" value="{{ $ta->nilai_penguji2 }}">
+                                            <input class="form-control" name="nilai_penguji2" type="text" value="{{ $ta->nilai_penguji2 }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Nilai Dosen Pembimbing</label>
-                                            <input class="form-control" name="" type="text" value="{{ $ta->nilai_dosbing }}">
+                                            <input class="form-control" name="nilai_dosbing" type="text" value="{{ $ta->nilai_dosbing }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Status</label>
-                                            <select id="dosbing" name="status" class="form-select">
-                                                <option value="Proses" @if ($ta->status == 'Proses') {{ 'selected' }} @endif>Proses</option>
-                                                <option value="Lulus" @if ($ta->status == 'Lulus') {{ 'selected' }} @endif>Lulus</option>
-                                                <option value="Belum lulus" @if ($ta->status == 'Belum lulus') {{ 'selected' }} @endif>Belum Lulus</option>
-                                            </select>
+                                                <span class="text-xs font-weight-bold">*jika nilai rata-rata kurang dari 56 maka mahasiswa tidak lulus</span>
                                             </div>
                                         </div>
                                         <div class="form-group">

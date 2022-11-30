@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('pengesahan', 200);
             $table->string('ijazah', 200);
             $table->string('rekomendasi', 200);
+            $table->foreignId('mahasiswa_id');
             $table->timestamps();
         });
     }

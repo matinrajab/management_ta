@@ -110,73 +110,67 @@ $sidang = true;
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="card-body">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="/admin/sidang/update/{{ $ta->id }}" method="POST" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Mahasiswa</label>
-                                        <select id="mahasiswa" class="form-select">
-                                            <option>Alif</option>
-                                            <option>Ana</option>
-                                        </select>
+                                        <input class="form-control" type="text" value="{{ $mahasiswa->nama_mhs }}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Judul Proposal</label>
-                                        <input class="form-control" type="text" value="Monitoring Tanaman Berbasis IOT" readonly>
+                                        <input class="form-control" name="judul" type="text" value="{{ $ta->judul }}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tanggal</label>
-                                        <input class="form-control" type="date">
+                                        <input class="form-control" name="tanggal" type="date" value="{{ $ta->tanggal }}">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tempat</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" name="tempat" type="text" value="{{ $ta->tempat }}">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Dosen Penguji 1</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" name="nama_penguji1" type="text" value="{{ $ta->nama_penguji1 }}">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Dosen Penguji 2</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" name="nama_penguji2" type="text" value="{{ $ta->nama_penguji2 }}">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nilai Penguji 1</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" name="nilai_penguji1" type="text" value="{{ $ta->nilai_penguji1 }}">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nilai Penguji 2</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" name="nilai_penguji2" type="text" value="{{ $ta->nilai_penguji2 }}">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nilai Dosen Pembimbing</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" name="nilai_dosbing" type="text" value="{{ $ta->nilai_dosbing }}">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Status</label>
-                                        <select id="dosbing" class="form-select">
-                                            <option>Proses</option>
-                                            <option>Lulus</option>
-                                            <option>Belum Lulus</option>
-                                        </select>
+                                            <span class="text-xs font-weight-bold">*jika nilai rata-rata kurang dari 56 maka mahasiswa tidak lulus</span>
                                         </div>
                                     </div>
                                     <div class="form-group">

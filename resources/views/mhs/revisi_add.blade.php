@@ -111,30 +111,25 @@ $sidang = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/mhs/sidang/revisi_store" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Tanggal</label>
-                                            <input class="form-control" type="date">
+                                            <input class="form-control" name="tanggal" type="date">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Catatan</label>
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" name="catatan" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">File</label>
-                                            <input class="form-control" type="file" value="file">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Status</label>
-                                            <input class="form-control bg-danger text-center text-light fw-bold" type="text" value="BELUM LULUS" readonly>
+                                            <input class="form-control" name="file" type="file" value="file">
                                             </div>
                                         </div>
                                         <div class="form-group">

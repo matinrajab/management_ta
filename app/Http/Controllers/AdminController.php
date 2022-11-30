@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Surat;
 use App\Models\Pembimbing;
 use App\Models\Mahasiswa;
+use App\Models\Proposal;
+use App\Models\Revisi;
+use App\Models\Ta;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use File;
 
 class AdminController extends Controller
 {
@@ -20,54 +26,322 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
+
+
     public function proposal()
     {
-        return view('admin.proposal');
+        $pembimbing = Pembimbing::all();
+        return view('admin.proposal', ['pembimbing' => $pembimbing]);
     }
 
-    public function proposal_edit()
+    public function proposal_download($id)
     {
-        return view('admin.proposal_edit');
+        $proposal = Proposal::find($id);
+
+        $dir = 'file_upload/';
+        $filename = $proposal->file;
+        $file_path = $dir . $filename;
+        $ctype = "application/octet-stream";
+
+        if (!empty($file_path) && file_exists($file_path)) {
+            header("Pragma:public");
+            header("Expired:0");
+            header("Cache-Control:must-revalidate");
+            header("Content-Control:public");
+            header("Content-Description: File Transfer");
+            header("Content-Type: $ctype");
+            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
+            header("Content-Transfer-Encoding:binary");
+            header("Content-Length:" . filesize($file_path));
+            flush();
+            readfile($file_path);
+            return redirect()->back();
+        }
+    }
+
+    public function proposal_edit($id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+        return view('admin.proposal_edit', ['mahasiswa' => $mahasiswa]);
+    }
+
+    public function proposal_update($id, Request $data)
+    {
+        $proposal = proposal::find($id);
+
+        $proposal->status = $data->status;
+        $proposal->save();
+
+        return redirect('/admin/proposal');
     }
 
     public function ta()
     {
-        return view('admin.ta');
-    }
-
-    public function ta_add()
-    {
-        return view('admin.ta_add');
-    }
-
-    public function ta_edit()
-    {
-        return view('admin.ta_edit');
+        $pembimbing = Pembimbing::all();
+        return view('admin.ta', ['pembimbing' => $pembimbing]);
     }
 
     public function sidang()
     {
-        return view('admin.sidang');
+        $pembimbing = Pembimbing::all();
+        return view('admin.sidang', ['pembimbing' => $pembimbing]);
     }
 
     public function sidang_add()
     {
-        return view('admin.sidang_add');
+        $pembimbing = Pembimbing::all();
+        return view('admin.sidang_add', ['pembimbing' => $pembimbing]);
     }
 
-    public function sidang_edit()
+    public function sidang_store(Request $data)
     {
-        return view('admin.sidang_edit');
+        $mahasiswa = Mahasiswa::where('nama_mhs', $data->nama_mhs)->first();
+
+        $this->validate($data, [
+            'nama_mhs' => 'required',
+            'tanggal' => 'required',
+            'tempat' => 'required',
+            'nama_penguji1' => 'required',
+            'nama_penguji2' => 'required',
+        ]);
+
+        Ta::create([
+            'judul' => $mahasiswa->proposal->judul,
+            'tanggal' => $data->tanggal,
+            'tempat' => $data->tempat,
+            'nama_penguji1' => $data->nama_penguji1,
+            'nama_penguji2' => $data->nama_penguji2,
+            'mahasiswa_id' => $mahasiswa->id,
+            'pembimbing_id' => $mahasiswa->pembimbing->id,
+        ]);
+
+        return redirect('/admin/sidang');
     }
 
-    public function revisi_add()
+    public function sidang_edit($id)
     {
-        return view('admin.revisi_add');
+        $ta = Ta::find($id);
+        $mahasiswa = Mahasiswa::where('id', $ta->mahasiswa_id)->first();
+        return view('admin.sidang_edit', ['ta' => $ta], ['mahasiswa' => $mahasiswa]);
     }
 
-    public function revisi_edit()
+    public function sidang_update($id, Request $data)
     {
-        return view('admin.revisi_edit');
+        $this->validate($data, [
+            'tanggal' => 'required',
+            'tempat' => 'required',
+            'nama_penguji1' => 'required',
+            'nama_penguji2' => 'required',
+            'nilai_penguji1' => 'required',
+            'nilai_penguji2' => 'required',
+            'nilai_dosbing' => 'required',
+        ]);
+
+        $ta = Ta::find($id);
+
+        $ta->tanggal = $data->tanggal;
+        $ta->tempat = $data->tempat;
+        $ta->nama_penguji1 = $data->nama_penguji1;
+        $ta->nama_penguji2 = $data->nama_penguji2;
+        $ta->nilai_penguji1 = $data->nilai_penguji1;
+        $ta->nilai_penguji2 = $data->nilai_penguji2;
+        $ta->nilai_dosbing = $data->nilai_dosbing;
+        $nilai = ($ta->nilai_penguji1 + $ta->nilai_penguji2 + $ta->nilai_dosbing) / 3;
+        if ($nilai >= 56) {
+            $ta->status = 'Lulus';
+        } else {
+            $ta->status = 'Belum lulus';
+        }
+
+        $ta->save();
+
+        return redirect('/admin/sidang');
+    }
+
+    public function sidang_hapus($id)
+    {
+        $ta = Ta::find($id);
+        $ta->delete();
+        return redirect()->back();
+    }
+
+    public function revisi_download($id)
+    {
+        $revisi = Revisi::find($id);
+
+        $dir = 'file_upload/';
+        $filename = $revisi->file;
+        $file_path = $dir . $filename;
+        $ctype = "application/octet-stream";
+
+        if (!empty($file_path) && file_exists($file_path)) {
+            header("Pragma:public");
+            header("Expired:0");
+            header("Cache-Control:must-revalidate");
+            header("Content-Control:public");
+            header("Content-Description: File Transfer");
+            header("Content-Type: $ctype");
+            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
+            header("Content-Transfer-Encoding:binary");
+            header("Content-Length:" . filesize($file_path));
+            flush();
+            readfile($file_path);
+            return redirect()->back();
+        }
+    }
+
+    public function revisi_edit($id)
+    {
+        $revisi = Revisi::find($id);
+        $mahasiswa = Mahasiswa::find($revisi->mahasiswa_id);
+        return view('admin.revisi_edit', ['revisi' => $revisi, 'mahasiswa' => $mahasiswa]);
+    }
+
+    public function revisi_update($id, Request $data)
+    {
+        $revisi = Revisi::find($id);
+
+        $revisi->status = $data->status;
+        $revisi->save();
+
+        return redirect('/admin/sidang');
+    }
+
+    public function surat()
+    {
+        $mahasiswa = Mahasiswa::all();
+        return view('admin.surat', ['mahasiswa' => $mahasiswa]);
+    }
+
+    public function surat_add($id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+        return view('admin.surat_add', ['mahasiswa' => $mahasiswa]);
+    }
+
+    public function surat_store($id, Request $data)
+    {
+        $this->validate($data, [
+            'pengesahan' => 'required|file|mimes:doc,docx,pdf',
+            'ijazah' => 'required|file|mimes:doc,docx,pdf',
+            'rekomendasi' => 'required|file|mimes:doc,docx,pdf',
+        ]);
+
+        // upload pengesahan
+        $file = $data->file('pengesahan');
+        $nama_file_pengesahan = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = 'file_upload';
+        $file->move($tujuan_upload, $nama_file_pengesahan);
+
+        // upload ijazah
+        $file = $data->file('ijazah');
+        $nama_file_ijazah = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = 'file_upload';
+        $file->move($tujuan_upload, $nama_file_ijazah);
+
+        // upload rekomendasi
+        $file = $data->file('rekomendasi');
+        $nama_file_rekomendasi = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = 'file_upload';
+        $file->move($tujuan_upload, $nama_file_rekomendasi);
+
+        $mahasiswa = Mahasiswa::find($id);
+
+        Surat::create([
+            'pengesahan' => $nama_file_pengesahan,
+            'ijazah' => $nama_file_ijazah,
+            'rekomendasi' => $nama_file_rekomendasi,
+            'mahasiswa_id' => $mahasiswa->id,
+        ]);
+
+        return redirect('/admin/surat');
+    }
+
+    public function surat_hapus($id)
+    {
+        $surat = Surat::find($id);
+        File::delete('file_upload/' . $surat->pengesahan);
+        File::delete('file_upload/' . $surat->ijazah);
+        File::delete('file_upload/' . $surat->rekomendasi);
+
+        $surat->delete();
+
+        return redirect()->back();
+    }
+
+    public function download_pengesahan($id)
+    {
+        $surat = Surat::find($id);
+
+        $dir = 'file_upload/';
+        $filename = $surat->pengesahan;
+        $file_path = $dir . $filename;
+        $ctype = "application/octet-stream";
+
+        if (!empty($file_path) && file_exists($file_path)) {
+            header("Pragma:public");
+            header("Expired:0");
+            header("Cache-Control:must-revalidate");
+            header("Content-Control:public");
+            header("Content-Description: File Transfer");
+            header("Content-Type: $ctype");
+            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
+            header("Content-Transfer-Encoding:binary");
+            header("Content-Length:" . filesize($file_path));
+            flush();
+            readfile($file_path);
+            return redirect()->back();
+        }
+    }
+
+    public function download_ijazah($id)
+    {
+        $surat = Surat::find($id);
+
+        $dir = 'file_upload/';
+        $filename = $surat->ijazah;
+        $file_path = $dir . $filename;
+        $ctype = "application/octet-stream";
+
+        if (!empty($file_path) && file_exists($file_path)) {
+            header("Pragma:public");
+            header("Expired:0");
+            header("Cache-Control:must-revalidate");
+            header("Content-Control:public");
+            header("Content-Description: File Transfer");
+            header("Content-Type: $ctype");
+            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
+            header("Content-Transfer-Encoding:binary");
+            header("Content-Length:" . filesize($file_path));
+            flush();
+            readfile($file_path);
+            return redirect()->back();
+        }
+    }
+
+    public function download_rekomendasi($id)
+    {
+        $surat = Surat::find($id);
+
+        $dir = 'file_upload/';
+        $filename = $surat->rekomendasi;
+        $file_path = $dir . $filename;
+        $ctype = "application/octet-stream";
+
+        if (!empty($file_path) && file_exists($file_path)) {
+            header("Pragma:public");
+            header("Expired:0");
+            header("Cache-Control:must-revalidate");
+            header("Content-Control:public");
+            header("Content-Description: File Transfer");
+            header("Content-Type: $ctype");
+            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
+            header("Content-Transfer-Encoding:binary");
+            header("Content-Length:" . filesize($file_path));
+            flush();
+            readfile($file_path);
+            return redirect()->back();
+        }
     }
 
     public function dosbing()

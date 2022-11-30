@@ -116,12 +116,13 @@ $sidang = true;
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji1</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dosen Penguji2</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nilai</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grade</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($pembimbing->mahasiswa as $m)
+                                        @foreach ($pembimbing->mahasiswa->sortBy('nama_mhs') as $m)
                                             @if ($m->ta)
                                             <tr>
                                                 <td class="align-middle text-center">
@@ -144,12 +145,47 @@ $sidang = true;
                                                     if ($nilai == 0) {
                                                         $nilai = NULL;
                                                     }
+                                                    if ($nilai >= 81) {
+                                                        $grade = 'A';
+                                                    }else if ($nilai >= 71) {
+                                                        $grade = 'AB';
+                                                    }else if ($nilai >= 66) {
+                                                        $grade = 'B';
+                                                    }else if ($nilai >= 61) {
+                                                        $grade = 'BC';
+                                                    }else if ($nilai >= 56) {
+                                                        $grade = 'C';
+                                                    }else if ($nilai >= 41) {
+                                                        $grade = 'D';
+                                                    }else if ($nilai > 0) {
+                                                        $grade = 'E';
+                                                    }else {
+                                                        $grade = NULL;
+                                                    }
                                                 @endphp
+                                                @if ($nilai >= 56)
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="badge badge-sm bg-gradient-success">{{ $nilai }}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-success">{{ $m->ta->status }}</span>
+                                                    <span class="badge badge-sm bg-gradient-success">{{ $grade }}</span>
+                                                </td>   
+                                                @else
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm bg-gradient-danger">{{ $nilai }}</span>
+                                                </td>
+                                                <td class="align-middle text-center text-sm">
+                                                    <span class="badge badge-sm bg-gradient-danger">{{ $grade }}</span>
+                                                </td>
+                                                @endif
+                                                <td class="align-middle text-center text-sm">
+                                                    @if ($nilai >= 56)
+                                                        <span class="badge badge-sm bg-gradient-success">{{ $m->ta->status }}</span>
+                                                    @elseif($nilai > 0)
+                                                        <span class="badge badge-sm bg-gradient-danger">{{ $m->ta->status }}</span>
+                                                    @elseif($nilai == NULL)
+                                                        <span class="badge badge-sm bg-gradient-warning">{{ $m->ta->status }}</span>
+                                                    @endif
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <a href="/dosen/sidang/edit/{{ $m->ta->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
@@ -189,26 +225,36 @@ $sidang = true;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Alif</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">Senin 15 November 2022</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">ertytrew</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="badge badge-sm bg-gradient-success">LULUS</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <a href="/dosen/revisi/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($pembimbing->mahasiswa->sortBy('nama_mhs') as $m)
+                                            @foreach ($m->revisi as $r)
+                                                <tr>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">{{ $m->nama_mhs }}</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">{{ $r->tanggal }}</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-xs font-weight-bold">{{ $r->catatan }}</span>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <a href="/dosen/sidang/revisi_download/{{ $r->id }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        @if ($r->status == 'Lulus')
+                                                            <span class="badge badge-sm bg-gradient-success">{{ $r->status }}</span>
+                                                        @elseif($r->status == 'Belum lulus')
+                                                            <span class="badge badge-sm bg-gradient-danger">{{ $r->status }}</span>
+                                                        @else
+                                                            <span class="badge badge-sm bg-gradient-warning">{{ $r->status }}</span>
+                                                        @endif
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <a href="/dosen/sidang/revisi_edit/{{ $r->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Ubah Status </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

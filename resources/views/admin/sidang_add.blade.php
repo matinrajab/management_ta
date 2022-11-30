@@ -110,39 +110,43 @@ $sidang = true;
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="card-body">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="/admin/sidang/store" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Mahasiswa</label>
-                                        <select id="mahasiswa" class="form-select">
-                                            <option>Alif</option>
-                                            <option>Ana</option>
+                                        <select id="mahasiswa" name="nama_mhs" class="form-select">
+                                            @foreach ($pembimbing as $p)
+                                                @foreach ($p->mahasiswa as $m)
+                                                    <option>{{ $m->nama_mhs }}</option>
+                                                @endforeach
+                                            @endforeach
                                         </select>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tanggal</label>
-                                        <input class="form-control" type="date">
+                                        <input class="form-control" name="tanggal" type="date">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Tempat</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" name="tempat" type="text">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Dosen Penguji 1</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" name="nama_penguji1" type="text">
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Dosen Penguji 2</label>
-                                        <input class="form-control" type="text">
+                                        <input class="form-control" name="nama_penguji2" type="text">
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -1,5 +1,5 @@
 <?php
-$surat = true;
+$surat_page = true;
 ?>
 @include('layouts.header');
 @include('layouts.sidebar_mhs');
@@ -116,16 +116,19 @@ $surat = true;
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="align-middle text-center">
-                                            <a href="#" disabled class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Lembar Pengesahan</a>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Ijazah</a>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <a href="#" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Surat</a>
-                                        </td>
+                                    @if ($mahasiswa->surat)
+                                        <tr>
+                                            <td class="align-middle text-center">
+                                                <a href="/mhs/surat/download_pengesahan/{{ $mahasiswa->surat->id }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Lembar Pengesahan</a>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <a href="/mhs/surat/download_ijazah/{{ $mahasiswa->surat->id }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Ijazah</a>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <a href="/mhs/surat/download_rekomendasi/{{ $mahasiswa->surat->id }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Surat</a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

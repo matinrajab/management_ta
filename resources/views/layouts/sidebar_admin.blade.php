@@ -42,6 +42,14 @@
                     <span class="nav-link-text ms-1 has-dropdown ">Sidang</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ isset($surat_page) ? 'active' : ''}}" href="{{ route('admin.surat')}}">
+                    <div class="icon icon-shape icon-sm text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-app text-info text-sm opacity-10 "></i>
+                    </div>
+                    <span class="nav-link-text ms-1 has-dropdown ">Surat</span>
+                </a>
+            </li>
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">List</h6>
             </li>

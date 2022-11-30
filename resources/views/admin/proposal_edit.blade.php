@@ -110,33 +110,35 @@ $proposal = true;
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="card-body">
-                            <form action="#" method="POST" enctype="multipart/form-data">
+                            <form action="/admin/proposal/update/{{ $mahasiswa->proposal->id }}" method="POST" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                {{ method_field('PUT') }}
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Mahasiswa</label>
-                                        <input class="form-control" type="text" value="Alif" readonly>
+                                        <input class="form-control" type="text" value="{{ $mahasiswa->nama_mhs }}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Judul Proposal</label>
-                                        <input class="form-control" type="text" value="Monitoring Tanaman Berbasis IOT" readonly>
+                                        <input class="form-control" type="text" value="{{ $mahasiswa->proposal->judul }}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Bidang</label>
-                                        <input class="form-control" type="text" value="Jaringan" readonly>
+                                        <input class="form-control" type="text" value="{{ $mahasiswa->proposal->bidang }}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-7">
                                         <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Status</label>
-                                        <select id="dosbing" class="form-select">
-                                            <option>Proses</option>
-                                            <option>Disetujui</option>
-                                            <option>Ditolak</option>
+                                        <select id="dosbing" name="status" class="form-select">
+                                            <option value="Proses" @if ($mahasiswa->proposal->status == 'Proses') {{ 'selected' }} @endif>Proses</option>
+                                            <option value="Disetujui" @if ($mahasiswa->proposal->status == 'Disetujui') {{ 'selected' }} @endif>Disetujui</option>
+                                            <option value="Ditolak" @if ($mahasiswa->proposal->status == 'Ditolak') {{ 'selected' }} @endif>Ditolak</option>
                                         </select>
                                         </div>
                                     </div>

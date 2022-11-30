@@ -1,5 +1,5 @@
 <?php 
-$mhs = true;
+$surat_page = true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ $mhs = true;
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('argon-dashboard-master') }}/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('argon-dashboard-master') }}/assets/img/favicon.png">
     <title>
-        Mahasiswa
+        Argon Dashboard 2 by Creative Tim
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -26,17 +26,18 @@ $mhs = true;
 
 <body class="g-sidenav-show bg-gray-100">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
-    @include('layouts.sidebar_dosen')
+    @include('layouts.sidebar_admin')
     <main class="main-content position-relative border-radius-lg ">
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="false">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Mahasiswa</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Surat</a></li>
+                    <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tambah Surat</li>
                 </ol>
-                <h6 class="font-weight-bolder text-white mb-0">Mahasiswa</h6>
                 </nav>
+
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group">
@@ -128,68 +129,76 @@ $mhs = true;
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Daftar Mahasiswa</h6>
+                            <h6>Tambah Surat</h6> 
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">NRP</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gender</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                                        </tr> 
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($pembimbing->mahasiswa->sortBy('nrp') as $m)
-                                        <tr>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">{{ $m->nrp }}</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">{{ $m->nama_mhs }}</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">{{ $m->gender }}</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">{{ $m->phone }}</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-xs font-weight-bold">{{ $m->email }}</span>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                            <div class="card-body">
+                                <form action="/admin/surat/store/{{ $mahasiswa->id }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">NRP</label>
+                                            <input class="form-control" name="nrp" type="text" value="{{ $mahasiswa->nrp }}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Mahasiswa</label>
+                                            <input class="form-control" name="nama_mhs" type="text" value="{{ $mahasiswa->nama_mhs }}" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Lembar Pengesahan</label>
+                                            <input class="form-control" type="file" name="pengesahan">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Ijazah</label>
+                                            <input class="form-control" type="file" name="ijazah">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                            <label for="example-text-input" class="form-control-label">Surat Rekomendasi</label>
+                                            <input class="form-control" type="file" name="rekomendasi">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Simpan" class="btn btn-primary btn-sm ms-auto">
+                                            <a href="/admin/surat" class="btn btn-warning btn-sm ms-auto">Kembali</a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <br>
-        @include('layouts.footer')
-    </main>
 
-    <!--   Core JS Files   -->
-    <script src="{{ asset('argon-dashboard-master') }}/assets/js/core/popper.min.js"></script>
-    <script src="{{ asset('argon-dashboard-master') }}/assets/js/core/bootstrap.min.js"></script>
-    <script src="{{ asset('argon-dashboard-master') }}/assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="{{ asset('argon-dashboard-master') }}/assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
+        </div>
+
+        @include('layouts.footer')
+
+        <!--   Core JS Files   -->
+        <script src="{{ asset('argon-dashboard-master') }}/assets/js/core/popper.min.js"></script>
+        <script src="{{ asset('argon-dashboard-master') }}/assets/js/core/bootstrap.min.js"></script>
+        <script src="{{ asset('argon-dashboard-master') }}/assets/js/plugins/perfect-scrollbar.min.js"></script>
+        <script src="{{ asset('argon-dashboard-master') }}/assets/js/plugins/smooth-scrollbar.min.js"></script>
+        <script>
+            var win = navigator.platform.indexOf('Win') > -1;
+            if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
+                    damping: '0.5'
+                }
+                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
             }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('argon-dashboard-master') }}/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+        </script>
+        <!-- Github buttons -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="{{ asset('argon-dashboard-master') }}/assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+    </main>
 </body>

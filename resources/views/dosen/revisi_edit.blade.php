@@ -111,33 +111,35 @@ $sidang = true;
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="card-body">
-                                <form action="#" method="POST" enctype="multipart/form-data">
+                                <form action="/dosen/sidang/revisi_update/{{ $revisi->id }}" method="POST" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
                                     <div class="row">
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Mahasiswa</label>
-                                            <input class="form-control" type="text" value="Alif" readonly>
+                                            <input class="form-control" type="text" value="{{ $mahasiswa->nama_mhs }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Tanggal</label>
-                                            <input class="form-control" type="date">
+                                            <input class="form-control" type="date" value="{{ $revisi->tanggal }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Catatan</label>
-                                            <input class="form-control" type="text" value="ertytrew" readonly>
+                                            <input class="form-control" type="text" value="{{ $revisi->catatan }}" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Status</label>
-                                            <select id="dosbing" class="form-select">
-                                                <option>Proses</option>
-                                                <option>Lulus</option>
-                                                <option>Belum Lulus</option>
+                                            <select id="dosbing" name="status" class="form-select">
+                                                <option value="Proses" @if ($revisi->status == 'Proses') {{ 'selected' }} @endif>Proses</option>
+                                                <option value="Lulus" @if ($revisi->status == 'Lulus') {{ 'selected' }} @endif>Lulus</option>
+                                                <option value="Belum lulus" @if ($revisi->status == 'Belum lulus') {{ 'selected' }} @endif>Belum lulus</option>
                                             </select>
                                             </div>
                                         </div>
