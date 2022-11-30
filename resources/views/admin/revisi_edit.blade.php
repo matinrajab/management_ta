@@ -130,7 +130,7 @@ $sidang = true;
                                         <div class="col-md-7">
                                             <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">Catatan</label>
-                                            <input class="form-control" type="text" value="{{ $revisi->catatan }}" readonly>
+                                            <input class="form-control" type="text" name="catatan" value="{{ $revisi->catatan }}">
                                             </div>
                                         </div>
                                         <div class="col-md-7">

@@ -229,7 +229,6 @@ class MhsController extends Controller
     {
         $this->validate($data, [
             'tanggal' => 'required',
-            'catatan' => 'required',
             'file' => 'required|file|mimes:doc,docx,pdf',
         ]);
 
@@ -243,7 +242,6 @@ class MhsController extends Controller
 
         Revisi::create([
             'tanggal' => $data->tanggal,
-            'catatan' => $data->catatan,
             'file' => $nama_file,
             'mahasiswa_id' => $mahasiswa->id,
             'pembimbing_id' => $mahasiswa->pembimbing_id,

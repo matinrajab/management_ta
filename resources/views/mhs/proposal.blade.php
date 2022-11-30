@@ -167,8 +167,6 @@ $proposal_page = true;
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <a href="/mhs/proposal/edit/{{ $mahasiswa->proposal->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                    <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                    <a href="/mhs/proposal/hapus/{{ $mahasiswa->proposal->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
                                                 </td>
                                             </tr>
                                         @endif

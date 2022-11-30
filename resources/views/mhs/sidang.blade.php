@@ -225,7 +225,7 @@ $sidang = true;
                                 <thead>
                                     <tr>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan Dosen Penguji</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
@@ -255,8 +255,6 @@ $sidang = true;
                                         </td>
                                         <td class="align-middle text-center">
                                             <a href="/mhs/sidang/revisi_edit/{{ $r->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                            <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                            <a href="/mhs/sidang/revisi_hapus/{{ $r->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
                                         </td>
                                     </tr>
                                     @endforeach

@@ -9,6 +9,7 @@ use App\Models\Pembimbing;
 use App\Models\Mahasiswa;
 use App\Models\Proposal;
 use App\Models\Revisi;
+use App\Models\Logbook;
 use App\Models\Ta;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -79,6 +80,13 @@ class AdminController extends Controller
     {
         $pembimbing = Pembimbing::all();
         return view('admin.ta', ['pembimbing' => $pembimbing]);
+    }
+
+    public function ta_hapus($id)
+    {
+        $logbook = Logbook::find($id);
+        $logbook->delete();
+        return redirect()->back();
     }
 
     public function sidang()
@@ -201,6 +209,7 @@ class AdminController extends Controller
     {
         $revisi = Revisi::find($id);
 
+        $revisi->catatan = $data->catatan;
         $revisi->status = $data->status;
         $revisi->save();
 

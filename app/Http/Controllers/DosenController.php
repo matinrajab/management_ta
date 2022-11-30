@@ -197,6 +197,7 @@ class DosenController extends Controller
     {
         $revisi = Revisi::find($id);
 
+        $revisi->catatan = $data->catatan;
         $revisi->status = $data->status;
         $revisi->save();
 

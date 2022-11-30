@@ -122,12 +122,6 @@ $sidang = true;
                                         </div>
                                         <div class="col-md-7">
                                             <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Catatan</label>
-                                            <input class="form-control" name="catatan" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="form-group">
                                             <label for="example-text-input" class="form-control-label">File</label>
                                             <input class="form-control" name="file" type="file" value="file">
                                             </div>

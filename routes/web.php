@@ -144,6 +144,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     Route::get('/admin/ta', [AdminController::class, 'ta'])->name('admin.ta');
 
+    Route::get('/admin/ta/hapus/{id}', [AdminController::class, 'ta_hapus'])->name('admin.ta_hapus');
+
     Route::get('/admin/sidang', [AdminController::class, 'sidang'])->name('admin.sidang');
 
     Route::get('/admin/sidang/add', [AdminController::class, 'sidang_add'])->name('admin.sidang_add');

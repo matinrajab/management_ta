@@ -105,7 +105,7 @@ $ta = true;
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <a href="/admin/ta/add" class="btn btn-primary btn-sm ms-auto">Tambah Logbook</a>
+                        <span><h6>Logbook</h6></span>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -137,9 +137,7 @@ $ta = true;
                                                         <span class="text-xs font-weight-bold">{{ $l->catatan }}</span>
                                                     </td>
                                                     <td class="align-middle text-center">
-                                                        <a href="/admin/ta/edit" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> Edit </a>
-                                                        <span class="text-secondary font-weight-bold text-xs"> | </span>
-                                                        <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
+                                                        <a href="/admin/ta/hapus/{{ $l->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delet user"> Delete </a>
                                                     </td>
                                                 </tr>
                                             @endforeach
