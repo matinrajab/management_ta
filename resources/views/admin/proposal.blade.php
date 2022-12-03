@@ -114,6 +114,7 @@ $proposal = true;
                                         <tr>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mahasiswa</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pembimbing</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bidang</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">File</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
@@ -129,6 +130,9 @@ $proposal = true;
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <span class="text-xs font-weight-bold">{{ $m->proposal->judul }}</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-xs font-weight-bold">{{ $p->nama_pembimbing }}</span>
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <span class="text-xs font-weight-bold">{{ $m->proposal->bidang }}</span>

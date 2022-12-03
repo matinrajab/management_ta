@@ -195,6 +195,10 @@ class DosenController extends Controller
 
     public function revisi_update($id, Request $data)
     {
+        $this->validate($data, [
+            'catatan' => 'required',
+        ]);
+
         $revisi = Revisi::find($id);
 
         $revisi->catatan = $data->catatan;
