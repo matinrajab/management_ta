@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Logbook;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pembimbing;
-use App\Models\Mahasiswa;
-use App\Models\Proposal;
-use App\Models\Revisi;
-use App\Models\Ta;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class DosenController extends Controller
 {
@@ -19,198 +14,89 @@ class DosenController extends Controller
         $this->middleware('auth');
     }
 
-    public function home()
+    public function mhsDosbing()
     {
-        return view('dosen.dashboard');
+        $pembimbing = Pembimbing::all();
+        return view('mhs.daftar_dosbing', ['pembimbing' => $pembimbing]);
     }
 
-    public function proposal()
+    public function adminDosbing()
     {
-        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
-        return view('dosen.proposal', ['pembimbing' => $pembimbing]);
+        $pembimbing = Pembimbing::all();
+        return view('admin.dosbing', ['pembimbing' => $pembimbing]);
     }
 
-    public function proposal_download($id)
+    public function dosbing_add()
     {
-        $proposal = Proposal::find($id);
-
-        $dir = 'file_upload/';
-        $filename = $proposal->file;
-        $file_path = $dir . $filename;
-        $ctype = "application/octet-stream";
-
-        if (!empty($file_path) && file_exists($file_path)) {
-            header("Pragma:public");
-            header("Expired:0");
-            header("Cache-Control:must-revalidate");
-            header("Content-Control:public");
-            header("Content-Description: File Transfer");
-            header("Content-Type: $ctype");
-            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
-            header("Content-Transfer-Encoding:binary");
-            header("Content-Length:" . filesize($file_path));
-            flush();
-            readfile($file_path);
-            return redirect()->back();
-        }
+        return view('admin.dosbing_add');
     }
 
-    public function proposal_edit($id)
-    {
-        $mahasiswa = Mahasiswa::find($id);
-        return view('dosen.proposal_edit', ['mahasiswa' => $mahasiswa]);
-    }
-
-    public function proposal_update($id, Request $data)
-    {
-        $proposal = proposal::find($id);
-
-        $proposal->status = $data->status;
-        $proposal->save();
-
-        return redirect('/dosen/proposal');
-    }
-
-    public function ta()
-    {
-        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
-        return view('dosen.ta', ['pembimbing' => $pembimbing]);
-    }
-
-    public function sidang()
-    {
-        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
-        return view('dosen.sidang', ['pembimbing' => $pembimbing]);
-    }
-
-    public function sidang_add()
-    {
-        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
-        return view('dosen.sidang_add', ['pembimbing' => $pembimbing]);
-    }
-
-    public function sidang_store(Request $data)
-    {
-        $mahasiswa = Mahasiswa::where('nama_mhs', $data->nama_mhs)->first();
-
-        $this->validate($data, [
-            'nama_mhs' => 'required',
-            'tanggal' => 'required',
-            'tempat' => 'required',
-            'nama_penguji1' => 'required',
-            'nama_penguji2' => 'required',
-        ]);
-
-        Ta::create([
-            'judul' => $mahasiswa->proposal->judul,
-            'tanggal' => $data->tanggal,
-            'tempat' => $data->tempat,
-            'nama_penguji1' => $data->nama_penguji1,
-            'nama_penguji2' => $data->nama_penguji2,
-            'mahasiswa_id' => $mahasiswa->id,
-            'pembimbing_id' => $mahasiswa->pembimbing->id,
-        ]);
-
-        return redirect('/dosen/sidang');
-    }
-
-    public function sidang_edit($id)
-    {
-        $ta = Ta::find($id);
-        $mahasiswa = Mahasiswa::where('id', $ta->mahasiswa_id)->first();
-        return view('dosen.sidang_edit', ['ta' => $ta], ['mahasiswa' => $mahasiswa]);
-    }
-
-    public function sidang_update($id, Request $data)
+    public function dosbing_store(Request $data)
     {
         $this->validate($data, [
-            'tanggal' => 'required',
-            'tempat' => 'required',
-            'nama_penguji1' => 'required',
-            'nama_penguji2' => 'required',
-            'nilai_penguji1' => 'required',
-            'nilai_penguji2' => 'required',
-            'nilai_dosbing' => 'required',
+            'nama_pembimbing' => 'required',
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
-        $ta = Ta::find($id);
+        User::create([
+            'name' => $data->nama_pembimbing,
+            'email' => $data->email,
+            'password' => Hash::make($data->password),
+            'type' => 1,
+        ]);
 
-        $ta->tanggal = $data->tanggal;
-        $ta->tempat = $data->tempat;
-        $ta->nama_penguji1 = $data->nama_penguji1;
-        $ta->nama_penguji2 = $data->nama_penguji2;
-        $ta->nilai_penguji1 = $data->nilai_penguji1;
-        $ta->nilai_penguji2 = $data->nilai_penguji2;
-        $ta->nilai_dosbing = $data->nilai_dosbing;
-        $nilai = ($ta->nilai_penguji1 + $ta->nilai_penguji2 + $ta->nilai_dosbing) / 3;
-        if ($nilai >= 56) {
-            $ta->status = 'Lulus';
-        } else {
-            $ta->status = 'Belum lulus';
-        }
+        Pembimbing::create([
+            'nip' => $data->nip,
+            'nama_pembimbing' => $data->nama_pembimbing,
+            'phone' => $data->phone,
+            'email' => $data->email,
+        ]);
 
-        $ta->save();
-
-        return redirect('/dosen/sidang');
+        return redirect('/admin/dosbing');
     }
 
-    public function sidang_hapus($id)
+    public function dosbing_edit($id)
     {
-        $ta = Ta::find($id);
-        $ta->delete();
-        return redirect()->back();
+        $pembimbing = Pembimbing::find($id);
+        $user = User::where('name', $pembimbing->nama_pembimbing)->first();
+        return view('admin.dosbing_edit', ['pembimbing' => $pembimbing, 'user' => $user]);
     }
 
-    public function revisi_download($id)
-    {
-        $revisi = Revisi::find($id);
-
-        $dir = 'file_upload/';
-        $filename = $revisi->file;
-        $file_path = $dir . $filename;
-        $ctype = "application/octet-stream";
-
-        if (!empty($file_path) && file_exists($file_path)) {
-            header("Pragma:public");
-            header("Expired:0");
-            header("Cache-Control:must-revalidate");
-            header("Content-Control:public");
-            header("Content-Description: File Transfer");
-            header("Content-Type: $ctype");
-            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
-            header("Content-Transfer-Encoding:binary");
-            header("Content-Length:" . filesize($file_path));
-            flush();
-            readfile($file_path);
-            return redirect()->back();
-        }
-    }
-
-    public function revisi_edit($id)
-    {
-        $revisi = Revisi::find($id);
-        $mahasiswa = Mahasiswa::find($revisi->mahasiswa_id);
-        return view('dosen.revisi_edit', ['revisi' => $revisi, 'mahasiswa' => $mahasiswa]);
-    }
-
-    public function revisi_update($id, Request $data)
+    public function dosbing_update($id, Request $data)
     {
         $this->validate($data, [
-            'catatan' => 'required',
+            'nip' => 'required',
+            'nama_pembimbing' => 'required',
+            'phone' => 'required',
+            'email' => 'required'
         ]);
 
-        $revisi = Revisi::find($id);
+        $pembimbing = Pembimbing::find($id);
+        $user = User::where('name', $pembimbing->nama_pembimbing)->first();
 
-        $revisi->catatan = $data->catatan;
-        $revisi->status = $data->status;
-        $revisi->save();
+        $pembimbing->nip = $data->nip;
+        $pembimbing->nama_pembimbing = $data->nama_pembimbing;
+        $pembimbing->phone = $data->phone;
+        $pembimbing->email = $data->email;
+        $pembimbing->save();
 
-        return redirect('/dosen/sidang');
+        $user->name = $data->nama_pembimbing;
+        $user->email = $data->email;
+        if ($data->password !== NULL) {
+            $user->password = Hash::make($data->password);
+        }
+        $user->save();
+
+        return redirect('/admin/dosbing');
     }
 
-    public function mhs()
+    public function dosbing_hapus($id)
     {
-        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
-        return view('dosen.daftar_mhs', ['pembimbing' => $pembimbing]);
+        $pembimbing = Pembimbing::find($id);
+        $user = User::where('name', $pembimbing->nama_pembimbing)->first();
+        $pembimbing->delete();
+        $user->delete();
+        return redirect('/admin/dosbing');
     }
 }

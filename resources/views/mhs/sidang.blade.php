@@ -242,7 +242,7 @@ $sidang = true;
                                             <span class="text-xs font-weight-bold">{{ $r->catatan }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <a href="/mhs/sidang/revisi_download/{{ $r->id }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
+                                            <a href="/download/{{ $r->file }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
                                         </td>
                                         <td class="align-middle text-center">
                                             @if ($r->status == 'Lulus')

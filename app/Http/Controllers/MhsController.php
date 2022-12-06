@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Logbook;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Pembimbing;
 use App\Models\Mahasiswa;
-use App\Models\Proposal;
-use App\Models\Revisi;
-use App\Models\Surat;
-use App\Models\Ta;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use File;
 
 class MhsController extends Controller
 {
@@ -21,393 +16,92 @@ class MhsController extends Controller
         $this->middleware('auth');
     }
 
-    public function home()
+    public function dosenMhs()
     {
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-        return view('mhs.dashboard', ['mahasiswa' => $mahasiswa]);
+        $pembimbing = Pembimbing::where('nama_pembimbing', Auth::user()->name)->first();
+        return view('dosen.daftar_mhs', ['pembimbing' => $pembimbing]);
     }
 
-    public function proposal()
+    public function adminMhs()
     {
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-        return view('mhs.proposal', ['mahasiswa' => $mahasiswa]);
+        $mahasiswa = Mahasiswa::all();
+        return view('admin.mhs', ['mahasiswa' => $mahasiswa]);
     }
 
-    public function proposal_download($id)
+    public function mhs_add()
     {
-        $proposal = Proposal::find($id);
-
-        $dir = 'file_upload/';
-        $filename = $proposal->file;
-        $file_path = $dir . $filename;
-        $ctype = "application/octet-stream";
-
-        if (!empty($file_path) && file_exists($file_path)) {
-            header("Pragma:public");
-            header("Expired:0");
-            header("Cache-Control:must-revalidate");
-            header("Content-Control:public");
-            header("Content-Description: File Transfer");
-            header("Content-Type: $ctype");
-            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
-            header("Content-Transfer-Encoding:binary");
-            header("Content-Length:" . filesize($file_path));
-            flush();
-            readfile($file_path);
-            return redirect()->back();
-        }
+        return view('admin.mhs_add');
     }
 
-    public function proposal_add()
-    {
-        $pembimbing = Pembimbing::all();
-        return view('mhs.proposal_add', ['pembimbing' => $pembimbing]);
-    }
-
-    public function proposal_store(Request $data)
+    public function mhs_store(Request $data)
     {
         $this->validate($data, [
-            'judul' => 'required',
-            'bidang' => 'required',
-            'nama_pembimbing' => 'required',
-            'file' => 'required|file|mimes:doc,docx,pdf',
+            'nama_mhs' => 'required',
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
-        // upload file
-        $file = $data->file('file');
-        $nama_file = time() . "_" . $file->getClientOriginalName();
-        $tujuan_upload = 'file_upload';
-        $file->move($tujuan_upload, $nama_file);
-
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-        $pembimbing = Pembimbing::where('nama_pembimbing', $data->nama_pembimbing)->first();
-
-        Proposal::create([
-            'judul' => $data->judul,
-            'bidang' => $data->bidang,
-            'nama_pembimbing' => $data->nama_pembimbing,
-            'file' => $nama_file,
-            'mahasiswa_id' => $mahasiswa->id,
-            'pembimbing_id' => $pembimbing->id,
+        User::create([
+            'name' => $data->nama_mhs,
+            'email' => $data->email,
+            'password' => Hash::make($data->password),
+            'type' => 0,
         ]);
 
-        $mahasiswa->pembimbing_id = $pembimbing->id;
+        Mahasiswa::create([
+            'nrp' => $data->nrp,
+            'nama_mhs' => $data->nama_mhs,
+            'gender' => $data->gender,
+            'phone' => $data->phone,
+            'email' => $data->email,
+        ]);
+
+        return redirect('/admin/mhs');
+    }
+
+    public function mhs_edit($id)
+    {
+        $mahasiswa = Mahasiswa::find($id);
+        $user = User::where('name', $mahasiswa->nama_mhs)->first();
+        return view('admin.mhs_edit', ['mahasiswa' => $mahasiswa, 'user' => $user]);
+    }
+
+    public function mhs_update($id, Request $data)
+    {
+        $this->validate($data, [
+            'nrp' => 'required',
+            'nama_mhs' => 'required',
+            'gender' => 'required',
+            'phone' => 'required',
+            'email' => 'required'
+        ]);
+
+        $mahasiswa = Mahasiswa::find($id);
+        $user = User::where('name', $mahasiswa->nama_mhs)->first();
+
+        $mahasiswa->nrp = $data->nrp;
+        $mahasiswa->nama_mhs = $data->nama_mhs;
+        $mahasiswa->gender = $data->gender;
+        $mahasiswa->phone = $data->phone;
+        $mahasiswa->email = $data->email;
         $mahasiswa->save();
 
-        return redirect('/mhs/proposal');
-    }
-
-    public function proposal_edit($id)
-    {
-        $proposal = Proposal::find($id);
-        return view('mhs.proposal_edit', ['proposal' => $proposal]);
-    }
-
-    public function proposal_update($id, Request $data)
-    {
-        $this->validate($data, [
-            'judul' => 'required',
-            'bidang' => 'required',
-        ]);
-
-        $proposal = Proposal::find($id);
-
-        // cek apakah file diganti
-        if ($data->file('file')) {
-            $this->validate($data, [
-                'file' => 'required|file|mimes:doc,docx,pdf',
-            ]);
-            File::delete('file_upload/' . $proposal->file);
-            $file = $data->file('file');
-            $nama_file = time() . "_" . $file->getClientOriginalName();
-            $tujuan_upload = 'file_upload';
-            $file->move($tujuan_upload, $nama_file);
-
-            $proposal->file = $nama_file;
+        $user->name = $data->nama_mhs;
+        $user->email = $data->email;
+        if ($data->password !== NULL) {
+            $user->password = Hash::make($data->password);
         }
+        $user->save();
 
-        $proposal->judul = $data->judul;
-        $proposal->bidang = $data->bidang;
-        $proposal->save();
-
-        return redirect('/mhs/proposal');
+        return redirect('/admin/mhs');
     }
 
-    public function proposal_hapus($id)
+    public function mhs_hapus($id)
     {
-        // hapus file dari direktori
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-        $proposal = Proposal::find($id);
-        File::delete('file_upload/' . $proposal->file);
-
-        // hapus data pada database
-        Proposal::find($id)->delete();
-
-        $mahasiswa->pembimbing_id = NULL;
-        $mahasiswa->save();
-
-        return redirect()->back();
-    }
-
-    public function ta()
-    {
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-        return view('mhs.ta', ['mahasiswa' => $mahasiswa]);
-    }
-
-    public function ta_add()
-    {
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-        return view('mhs.ta_add', ['mahasiswa' => $mahasiswa]);
-    }
-
-    public function ta_store(Request $data)
-    {
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-
-        $this->validate($data, [
-            'tanggal' => 'required',
-            'kegiatan' => 'required',
-            'catatan' => 'required'
-        ]);
-
-        Logbook::create([
-            'nama_pembimbing' => $data->nama_pembimbing,
-            'tanggal' => $data->tanggal,
-            'kegiatan' => $data->kegiatan,
-            'catatan' => $data->catatan,
-            'mahasiswa_id' => $mahasiswa->id,
-            'pembimbing_id' => $mahasiswa->pembimbing->id,
-        ]);
-
-        return redirect('/mhs/ta');
-    }
-
-    public function ta_edit($id)
-    {
-        $logbook = Logbook::find($id);
-        return view('mhs.ta_edit', ['logbook' => $logbook]);
-    }
-
-    public function ta_update($id, Request $data)
-    {
-        $this->validate($data, [
-            'tanggal' => 'required',
-            'kegiatan' => 'required',
-            'catatan' => 'required'
-        ]);
-
-        $logbook = Logbook::find($id);
-
-        $logbook->tanggal = $data->tanggal;
-        $logbook->kegiatan = $data->kegiatan;
-        $logbook->catatan = $data->catatan;
-        $logbook->save();
-
-        return redirect('/mhs/ta');
-    }
-
-    public function ta_hapus($id)
-    {
-        $logbook = Logbook::find($id);
-        $logbook->delete();
-        return redirect()->back();
-    }
-
-    public function sidang()
-    {
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-        return view('mhs.sidang', ['mahasiswa' => $mahasiswa]);
-    }
-
-    public function revisi_add()
-    {
-        return view('mhs.revisi_add');
-    }
-
-    public function revisi_store(Request $data)
-    {
-        $this->validate($data, [
-            'tanggal' => 'required',
-            'file' => 'required|file|mimes:doc,docx,pdf',
-        ]);
-
-        // upload file
-        $file = $data->file('file');
-        $nama_file = time() . "_" . $file->getClientOriginalName();
-        $tujuan_upload = 'file_upload';
-        $file->move($tujuan_upload, $nama_file);
-
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-
-        Revisi::create([
-            'tanggal' => $data->tanggal,
-            'file' => $nama_file,
-            'mahasiswa_id' => $mahasiswa->id,
-            'pembimbing_id' => $mahasiswa->pembimbing_id,
-        ]);
-
-        return redirect('/mhs/sidang');
-    }
-
-    public function revisi_download($id)
-    {
-        $revisi = Revisi::find($id);
-
-        $dir = 'file_upload/';
-        $filename = $revisi->file;
-        $file_path = $dir . $filename;
-        $ctype = "application/octet-stream";
-
-        if (!empty($file_path) && file_exists($file_path)) {
-            header("Pragma:public");
-            header("Expired:0");
-            header("Cache-Control:must-revalidate");
-            header("Content-Control:public");
-            header("Content-Description: File Transfer");
-            header("Content-Type: $ctype");
-            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
-            header("Content-Transfer-Encoding:binary");
-            header("Content-Length:" . filesize($file_path));
-            flush();
-            readfile($file_path);
-            return redirect()->back();
-        }
-    }
-
-    public function revisi_edit($id)
-    {
-        $revisi = Revisi::find($id);
-        return view('mhs.revisi_edit', ['revisi' => $revisi]);
-    }
-
-    public function revisi_update($id, Request $data)
-    {
-        $this->validate($data, [
-            'tanggal' => 'required',
-            'catatan' => 'required',
-        ]);
-
-        $revisi = Revisi::find($id);
-
-        // cek apakah file diganti
-        if ($data->file('file')) {
-            $this->validate($data, [
-                'file' => 'required|file|mimes:doc,docx,pdf',
-            ]);
-            File::delete('file_upload/' . $revisi->file);
-            $file = $data->file('file');
-            $nama_file = time() . "_" . $file->getClientOriginalName();
-            $tujuan_upload = 'file_upload';
-            $file->move($tujuan_upload, $nama_file);
-
-            $revisi->file = $nama_file;
-        }
-
-        $revisi->tanggal = $data->tanggal;
-        $revisi->catatan = $data->catatan;
-        $revisi->save();
-
-        return redirect('/mhs/sidang');
-    }
-
-    public function revisi_hapus($id)
-    {
-        $revisi = Revisi::find($id);
-
-        // hapus file dari direktori
-        File::delete('file_upload/' . $revisi->file);
-
-        // hapus data pada database
-        $revisi->delete();
-
-        return redirect()->back();
-    }
-
-    public function surat()
-    {
-        $mahasiswa = Mahasiswa::where('nama_mhs', Auth::user()->name)->first();
-        return view('mhs.surat', ['mahasiswa' => $mahasiswa]);
-    }
-
-    public function download_pengesahan($id)
-    {
-        $surat = Surat::find($id);
-
-        $dir = 'file_upload/';
-        $filename = $surat->pengesahan;
-        $file_path = $dir . $filename;
-        $ctype = "application/octet-stream";
-
-        if (!empty($file_path) && file_exists($file_path)) {
-            header("Pragma:public");
-            header("Expired:0");
-            header("Cache-Control:must-revalidate");
-            header("Content-Control:public");
-            header("Content-Description: File Transfer");
-            header("Content-Type: $ctype");
-            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
-            header("Content-Transfer-Encoding:binary");
-            header("Content-Length:" . filesize($file_path));
-            flush();
-            readfile($file_path);
-            return redirect()->back();
-        }
-    }
-
-    public function download_ijazah($id)
-    {
-        $surat = Surat::find($id);
-
-        $dir = 'file_upload/';
-        $filename = $surat->ijazah;
-        $file_path = $dir . $filename;
-        $ctype = "application/octet-stream";
-
-        if (!empty($file_path) && file_exists($file_path)) {
-            header("Pragma:public");
-            header("Expired:0");
-            header("Cache-Control:must-revalidate");
-            header("Content-Control:public");
-            header("Content-Description: File Transfer");
-            header("Content-Type: $ctype");
-            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
-            header("Content-Transfer-Encoding:binary");
-            header("Content-Length:" . filesize($file_path));
-            flush();
-            readfile($file_path);
-            return redirect()->back();
-        }
-    }
-
-    public function download_rekomendasi($id)
-    {
-        $surat = Surat::find($id);
-
-        $dir = 'file_upload/';
-        $filename = $surat->rekomendasi;
-        $file_path = $dir . $filename;
-        $ctype = "application/octet-stream";
-
-        if (!empty($file_path) && file_exists($file_path)) {
-            header("Pragma:public");
-            header("Expired:0");
-            header("Cache-Control:must-revalidate");
-            header("Content-Control:public");
-            header("Content-Description: File Transfer");
-            header("Content-Type: $ctype");
-            header("Content-Disposition:attachment; filename=\"" . basename($file_path) . "\"");
-            header("Content-Transfer-Encoding:binary");
-            header("Content-Length:" . filesize($file_path));
-            flush();
-            readfile($file_path);
-            return redirect()->back();
-        }
-    }
-
-    public function dosbing()
-    {
-        $pembimbing = Pembimbing::all();
-        return view('mhs.daftar_dosbing', ['pembimbing' => $pembimbing]);
+        $mahasiswa = Mahasiswa::find($id);
+        $user = User::where('name', $mahasiswa->nama_mhs)->first();
+        $mahasiswa->delete();
+        $user->delete();
+        return redirect('/admin/mhs');
     }
 }

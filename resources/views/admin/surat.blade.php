@@ -145,13 +145,13 @@ $surat_page = true;
                                                             $suratExist = true;
                                                         @endphp
                                                         <td class="align-middle text-center">
-                                                            <a href="/admin/surat/download_pengesahan/{{ $m->surat->id }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Lembar Pengesahan</a>
+                                                            <a href="/download/{{ $m->surat->pengesahan }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Lembar Pengesahan</a>
                                                         </td>
                                                         <td class="align-middle text-center">
-                                                            <a href="/admin/surat/download_ijazah/{{ $m->surat->id }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Ijazah</a>
+                                                            <a href="/download/{{ $m->surat->ijazah }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Ijazah</a>
                                                         </td>
                                                         <td class="align-middle text-center">
-                                                            <a href="/admin/surat/download_rekomendasi/{{ $m->surat->id }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Surat</a>
+                                                            <a href="/download/{{ $m->surat->rekomendasi }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Surat</a>
                                                         </td>
                                                     @else
                                                         @php

@@ -119,13 +119,13 @@ $surat_page = true;
                                     @if ($mahasiswa->surat)
                                         <tr>
                                             <td class="align-middle text-center">
-                                                <a href="/mhs/surat/download_pengesahan/{{ $mahasiswa->surat->id }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Lembar Pengesahan</a>
+                                                <a href="/download/{{ $mahasiswa->surat->pengesahan }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Lembar Pengesahan</a>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="/mhs/surat/download_ijazah/{{ $mahasiswa->surat->id }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Ijazah</a>
+                                                <a href="/download/{{ $mahasiswa->surat->ijazah }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Ijazah</a>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="/mhs/surat/download_rekomendasi/{{ $mahasiswa->surat->id }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Surat</a>
+                                                <a href="/download/{{ $mahasiswa->surat->rekomendasi }}" class="btn badge badge-sm text-uppercase bg-gradient-success border : none mb-0">Cetak Surat</a>
                                             </td>
                                         </tr>
                                     @endif

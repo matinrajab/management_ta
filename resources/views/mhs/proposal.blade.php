@@ -160,7 +160,7 @@ $proposal_page = true;
                                                     <span class="text-xs font-weight-bold">{{ $mahasiswa->proposal->nama_pembimbing }}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <a href="/mhs/proposal/download/{{ $mahasiswa->proposal->id }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
+                                                    <a href="/download/{{ $mahasiswa->proposal->file }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="badge badge-sm bg-gradient-success">{{ $mahasiswa->proposal->status }}</span>

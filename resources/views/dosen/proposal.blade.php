@@ -156,7 +156,7 @@ $proposal = true;
                                                     <span class="text-xs font-weight-bold">{{ $m->proposal->bidang }}</span>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <a href="/dosen/proposal/download/{{ $m->proposal->id }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
+                                                    <a href="/download/{{ $m->proposal->file }}" class="btn badge badge-sm text-uppercase bg-gradient-warning mb-0">download</a>
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <span class="badge badge-sm bg-gradient-success">{{ $m->proposal->status }}</span>
